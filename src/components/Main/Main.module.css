@@ -1,0 +1,11 @@
+.main  {
+  grid-area: main;
+  background-color: #c0c7cb;
+  /* background-color: #ffffff; */
+}
+
+.main img  {
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+}
