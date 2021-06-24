@@ -1,16 +1,20 @@
 import React from 'react';
 import style from './Post.module.css';
 
+type PostType = {
+    message?: string,
+    likeCounts?: string,
+}
 
-const Post = () => {
+
+const Post: React.FC<PostType> = (props) => {
     return (
         <div className={style.item}>
             <img src='https://s6.cdn.teleprogramma.pro/wp-content/uploads/2020/01/e187d44f997b399185adaf352cc17b83.jpg' alt="avatar" />
-            Post 1
+            {props.message}
             <div>
-                <span>like</span>
+                <span>like: {props.likeCounts}</span>
             </div>
-
         </div>
 
     )
