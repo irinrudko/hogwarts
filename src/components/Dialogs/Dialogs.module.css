@@ -1,0 +1,22 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    background-color: rgba(27, 171, 207, 0.746);
+    height: inherit;
+}
+
+.people {
+    padding: 10px;
+}
+
+.chats {
+    padding: 10px;
+}
+
+.people .item {
+    padding: 10px;
+}
+
+.chats .item {
+    padding: 20px;
+}

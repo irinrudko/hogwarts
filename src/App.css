@@ -1,17 +1,22 @@
-.app-wrapper  {
+.app-wrapper {
   display: grid;
   width: 1200px;
   margin: 0 auto;
   grid-template-areas:
-              "header header header"
-              "nav main main";
+    "header header header"
+    "nav main main";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   gap: 10px;
-}
-
-.site-wrapper  {
-  /* background-color: #b8bbba; */
   height: 100vh;
+
 }
 
+.site-wrapper {
+  /* background-color: #b8bbba; */
+}
+
+.app-wrapper-content {
+  grid-area: main;
+  height: 90vh;
+}

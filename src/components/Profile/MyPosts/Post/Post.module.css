@@ -1,6 +1,7 @@
 .item {
     color: rgb(37, 107, 84);
     margin: 10px;
+    margin-bottom: 0;
 }
 
 .item img {
