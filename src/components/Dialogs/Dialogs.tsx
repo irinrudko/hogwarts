@@ -7,15 +7,15 @@ type MessageType = {
     message: string,
 }
 
+type DialogItemType = {
+    name: string,
+    id: string,
+}
+
 const Message = (props: MessageType) => {
     return (
         <div className={style.item}>{props.message}</div>
     )
-}
-
-type DialogItemType = {
-    name: string,
-    id: string,
 }
 
 const DialogItem = (props: DialogItemType) => {
@@ -41,23 +41,15 @@ let messagesData = [
     { id: '3', message: "Check some pics of Lena", },
 ]
 
+let dialogsElements = dialogsData.map(dialog => (<div key={dialog.id}> <DialogItem name={dialog.name} id={dialog.id} /></div>))
+let messagesElements = messagesData.map(el => <div key={el.id}><Message message={el.message} /></div>)
+
 
 const Dialogs = (props: DialogItemType) => {
     return (
         <div className={style.dialogs}>
-            <div className={style.people}>
-                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
-                <DialogItem name="Anna" id="3" />
-                <DialogItem name="Mike" id="4" />
-                <DialogItem name="Lena T" id="5" />
-            </div>
-
-            <div className={style.chats}>
-                <Message message={messagesData[0].message} />
-                <Message message={messagesData[1].message} />
-                <Message message={messagesData[2].message} />
-            </div>
+            <div className={style.people}>{dialogsElements}</div>
+            <div className={style.chats}>{messagesElements}</div>
         </div >
     )
 }
