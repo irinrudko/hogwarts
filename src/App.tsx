@@ -21,7 +21,6 @@ function App() {
             <Route path='/friends' component={Friends} />
           </main>
         </div>
-
       </div >
     </BrowserRouter>
   );
