@@ -5,7 +5,7 @@ import style from './../Dialogs.module.css';
 
 type DialogItemType = {
     name: string,
-    id: string,
+    id: number,
 }
 
 const DialogItem = (props: DialogItemType) => {

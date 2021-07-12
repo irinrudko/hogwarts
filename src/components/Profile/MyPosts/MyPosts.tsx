@@ -3,17 +3,17 @@ import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
 type PostItem = {
-    id: string
+    id: number
     message: string
     likeCounts: string
 }
 
 type PostsData = {
-    data: Array<PostItem>
+    posts: Array<PostItem>
 }
 
 const MyPosts = (props: PostsData) => {
-    let postsElements = props.data.map(post => <div key={post.id}> <Post message={post.message} likeCounts={post.likeCounts} /></div>)
+    let postsElements = props.posts.map(post => <div key={post.id}> <Post message={post.message} likeCounts={post.likeCounts} /></div>)
 
     return (
         <div>
