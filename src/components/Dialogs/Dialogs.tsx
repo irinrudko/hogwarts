@@ -3,29 +3,21 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './Dialogs.module.css';
 
-type MessageType = {
-    message: string,
-}
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
 
+// вынести в DialogItem.tsx
 type DialogItemType = {
     name: string,
     id: string,
 }
 
-const Message = (props: MessageType) => {
-    return (
-        <div className={style.item}>{props.message}</div>
-    )
-}
+// вынести в Message.tsx
 
-const DialogItem = (props: DialogItemType) => {
-    let path = '/dialogs/' + props.id;
-
-    return (
-        <div className={style.item}><NavLink to={path}>{props.name}</NavLink>
-        </div >
-    )
+type MessageType = {
+    message: string,
 }
+/////////////////////////////
 
 let dialogsData = [
     { id: '1', name: "Nastya", },
