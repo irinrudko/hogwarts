@@ -8,27 +8,29 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-function App() {
-  let postsData = [
-    { id: 1, message: "Hi, how're you?", likeCounts: "15" },
-    { id: 2, message: "Hey, it's my first post", likeCounts: "20" },
-    { id: 3, message: "Hey, it's my second post here", likeCounts: "2" },
-    { id: 4, message: "This is a mapped post", likeCounts: "1000" },
-  ]
+type PostsItem = {
+  id: number
+  message: string
+  likeCounts: string
+}
 
-  let dialogsData = [
-    { id: 1, name: "Nastya", },
-    { id: 2, name: "Tanya", },
-    { id: 3, name: "Anna", },
-    { id: 4, name: "Mike", },
-    { id: 5, name: "LenaT", },
-  ]
+type DialogsItem = {
+  id: number
+  name: string
+}
 
-  let messagesData = [
-    { id: 1, message: "hey", },
-    { id: 2, message: "how're you?", },
-    { id: 3, message: "Check some pics of Lena", },
-  ]
+type MessagesItem = {
+  id: number
+  message: string
+}
+
+type ContentItems = {
+  posts: Array<PostsItem>//key должен совпадать с именем атрибута, которое добавляем в компоненте на уровень выше (то, что приходит в пропсы)
+  dialogs: Array<DialogsItem>
+  messages: Array<MessagesItem>
+}
+
+const App: React.FC<ContentItems> = (props) => {
 
   return (
     <BrowserRouter>
@@ -38,9 +40,8 @@ function App() {
           <NavBar />
           <main className='app-wrapper-content'>
             {/* <Route path='/profile' component={Profile} /> */}
-
-            <Route path='/profile' render={() => <Profile posts={postsData} />} />
-            <Route path='/dialogs' render={() => <Dialogs dialogs={dialogsData} messages={messagesData} />} />
+            <Route path='/profile' render={() => <Profile posts={props.posts} />} />
+            <Route path='/dialogs' render={() => <Dialogs dialogs={props.dialogs} messages={props.messages} />} />
             <Route path='/friends' render={() => <Friends />} />
           </main>
         </div>

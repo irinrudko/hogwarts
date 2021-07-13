@@ -21,8 +21,6 @@ type DialogsType = {
     messages: Array<MessageItemType>
 }
 
-//id – string?? 
-
 
 const Dialogs: React.FC<DialogsType> = (props) => {
     let dialogsElements = props.dialogs.map(dialog => (<div key={dialog.id}> <DialogItem name={dialog.name} id={dialog.id} /></div>))
