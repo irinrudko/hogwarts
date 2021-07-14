@@ -7,30 +7,10 @@ import NavBar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
+import state from './redux/redux';
 
-type PostsItem = {
-  id: number
-  message: string
-  likeCounts: string
-}
 
-type DialogsItem = {
-  id: number
-  name: string
-}
-
-type MessagesItem = {
-  id: number
-  message: string
-}
-
-type ContentItems = {
-  posts: Array<PostsItem>//key должен совпадать с именем атрибута, которое добавляем в компоненте на уровень выше (то, что приходит в пропсы)
-  dialogs: Array<DialogsItem>
-  messages: Array<MessagesItem>
-}
-
-const App: React.FC<ContentItems> = (props) => {
+const App = () => {
 
   return (
     <BrowserRouter>
@@ -39,9 +19,8 @@ const App: React.FC<ContentItems> = (props) => {
           <Header />
           <NavBar />
           <main className='app-wrapper-content'>
-            {/* <Route path='/profile' component={Profile} /> */}
-            <Route path='/profile' render={() => <Profile posts={props.posts} />} />
-            <Route path='/dialogs' render={() => <Dialogs dialogs={props.dialogs} messages={props.messages} />} />
+            <Route path='/profile' render={() => <Profile posts={state.profilePage.postsData} />} />
+            <Route path='/dialogs' render={() => <Dialogs dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} />} />
             <Route path='/friends' render={() => <Friends />} />
           </main>
         </div>
