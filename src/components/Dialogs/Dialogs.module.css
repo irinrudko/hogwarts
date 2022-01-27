@@ -1,7 +1,8 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    background-color: rgba(27, 171, 207, 0.746);
+    background-color: #ffffff;
+    border: 1px solid #D8DFEB;
     height: inherit;
 }
 

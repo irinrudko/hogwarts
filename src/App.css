@@ -7,7 +7,7 @@
     "nav main main";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  gap: 10px;
+  /* gap: 10px; */
   height: 100vh;
 
 }
@@ -19,4 +19,16 @@
 .app-wrapper-content {
   grid-area: main;
   height: 90vh;
+}
+
+a {
+  font-family: Lato;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  /* letter-spacing: 0em; */
+  /* text-align: left; */
+  color: #7E8EAB;
+
 }

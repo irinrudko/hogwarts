@@ -1,6 +1,7 @@
 .profile {
   grid-area: main;
-  background-color: #c0c7cb;
+  background-color: #ffffff;
+  border: 1px solid #D8DFEB;
   height: inherit;
   /* background-color: #ffffff; */
 }

@@ -18,6 +18,7 @@ const App = () => {
         <div className='app-wrapper'>
           <Header />
           <NavBar />
+
           <main className='app-wrapper-content'>
             <Route path='/profile' render={() => <Profile posts={state.profilePage.postsData} />} />
             <Route path='/dialogs' render={() => <Dialogs dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} />} />

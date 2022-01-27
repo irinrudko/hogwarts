@@ -1,21 +1,43 @@
 .nav {
   grid-area: nav;
-  background-color: #c0c7cb;
-
+  background-color: #ffffff;
+  border: 1px solid #D8DFEB;
+  border-right: none;
   /* background-color: #ffffff; */
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .item {
-  padding: 10px 0;
+  /* display: flex; */
+  /* align-items: center; */
+  padding: 10px 0px;
+  /* justify-content: center; */
+
   list-style-type: none;
   font-size: 20px;
 }
 
 .link {
-  color: #ffffff;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
-.active {
-  /* color: green; */
+/* .link.active {
+  color: green;
+} */
+
+.ico {
+  width: 24px;
+  height: 24px;
+
+  background-color: #F0F4FA;
+  /* background-position: center; */
+  padding: 4px;
+  margin-right: 10px;
+
+
 }
