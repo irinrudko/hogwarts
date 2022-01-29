@@ -8,16 +8,17 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  max-width: 350px;
 }
 
 .item {
-  /* display: flex; */
-  /* align-items: center; */
-  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
   /* justify-content: center; */
-
   list-style-type: none;
   font-size: 20px;
+  width: 130px;
 }
 
 .link {
@@ -26,18 +27,36 @@
   align-items: center;
 }
 
-/* .link.active {
-  color: green;
-} */
-
 .ico {
   width: 24px;
   height: 24px;
-
   background-color: #F0F4FA;
-  /* background-position: center; */
   padding: 4px;
   margin-right: 10px;
-
-
+  border-radius: 6px;
 }
+
+.item:hover {
+  background-color: #E8F1FF;
+  border-radius: 7px;
+  color: #2D5BAA;
+}
+
+/* change ico color on  start */
+.item:hover>svg {
+  background-color: #2D5BAA;
+}
+
+.item:hover>svg path:nth-child(1) {
+  fill: #ffffff;
+}
+
+.item:hover>svg path:nth-child(2) {
+  fill: #ffffff;
+}
+
+.item:hover>svg path:nth-child(3) {
+  fill: #ffffff;
+}
+
+/* change ico color on hover end */
