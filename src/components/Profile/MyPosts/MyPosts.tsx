@@ -5,7 +5,7 @@ import Post from './Post/Post';
 type PostItem = {
     id: number
     message: string
-    likeCounts: string
+    likesCount: string
 }
 
 type PostsData = {
@@ -13,7 +13,7 @@ type PostsData = {
 }
 
 const MyPosts = (props: PostsData) => {
-    let postsElements = props.posts.map(post => <div key={post.id}> <Post message={post.message} likeCounts={post.likeCounts} /></div>)
+    let postsElements = props.posts.map(post => <div key={post.id}> <Post message={post.message} likesCount={post.likesCount} /></div>)
 
     return (
         <div>

@@ -1,7 +1,7 @@
 type PostType = {
     id: number
     message: string
-    likeCounts: string
+    likesCount: string
 }
 type DialogType = {
     id: number
@@ -27,10 +27,10 @@ type RootStateType = {
 let state: RootStateType = {
     profilePage: {
         postsData: [
-            { id: 1, message: "Hi, how're you?", likeCounts: "15" },
-            { id: 2, message: "Hey, it's my first post", likeCounts: "20" },
-            { id: 3, message: "Hey, it's my second post here", likeCounts: "2" },
-            { id: 4, message: "This is a mapped post", likeCounts: "1000" },
+            { id: 1, message: "Hi, how're you?", likesCount: "15" },
+            { id: 2, message: "Hey, it's my first post", likesCount: "20" },
+            { id: 3, message: "Hey, it's my second post here", likesCount: "2" },
+            { id: 4, message: "This is a mapped post", likesCount: "1000" },
         ],
     },
     dialogsPage: {

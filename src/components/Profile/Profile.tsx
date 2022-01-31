@@ -6,7 +6,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 type PostItem = {
     id: number
     message: string
-    likeCounts: string
+    likesCount: string
 }
 
 type PostsData = {
