@@ -28,8 +28,8 @@ const MyPosts = (props: PostsData) => {
         // alert(postMessageRef.current?.value);
         if (postMessageRef.current) {
             props.addPost(postMessageRef.current.value);
+            postMessageRef.current.value = '';
         }
-        debugger
     }
 
     return (
