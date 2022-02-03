@@ -19,6 +19,8 @@
   list-style-type: none;
   font-size: 20px;
   width: 130px;
+  cursor: pointer;
+
 }
 
 .link {
