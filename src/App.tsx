@@ -8,11 +8,11 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { RootStateType } from './redux/redux';
-import { addPost } from './redux/redux';
 
 
 type AppType = {
   appState: RootStateType
+  addPost: (postText: string) => void
 }
 
 const App = (props: AppType) => {
@@ -27,7 +27,7 @@ const App = (props: AppType) => {
           <NavBar />
 
           <main className='app-wrapper-content'>
-            <Route path='/profile' render={() => <Profile posts={state.profilePage.postsData} addPost={addPost} />} />
+            <Route path='/profile' render={() => <Profile posts={state.profilePage.postsData} addPost={props.addPost} />} />
             <Route path='/dialogs' render={() => <Dialogs dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} />} />
             <Route path='/friends' render={() => <Friends />} />
           </main>
