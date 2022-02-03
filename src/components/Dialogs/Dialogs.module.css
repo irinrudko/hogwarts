@@ -8,6 +8,8 @@
 
 .people {
     padding: 10px;
+
+
 }
 
 .chats {
@@ -15,9 +17,15 @@
 }
 
 .people .item {
-    padding: 10px;
+    padding: 20px;
+    background-color: rgb(180, 199, 156);
+    border-bottom: 1px solid black;
+
 }
 
 .chats .item {
-    padding: 20px;
+    padding: 23px;
+    background-color: beige;
+    border-bottom: 1px solid black;
+
 }

@@ -7,10 +7,17 @@ import NavBar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
-import state from './redux/redux';
+import { RootStateType } from './redux/redux';
+import { addPost } from './redux/redux';
 
 
-const App = () => {
+type AppType = {
+  appState: RootStateType
+}
+
+const App = (props: AppType) => {
+
+  const state = props.appState;
 
   return (
     <BrowserRouter>
@@ -20,7 +27,7 @@ const App = () => {
           <NavBar />
 
           <main className='app-wrapper-content'>
-            <Route path='/profile' render={() => <Profile posts={state.profilePage.postsData} />} />
+            <Route path='/profile' render={() => <Profile posts={state.profilePage.postsData} addPost={addPost} />} />
             <Route path='/dialogs' render={() => <Dialogs dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} />} />
             <Route path='/friends' render={() => <Friends />} />
           </main>
