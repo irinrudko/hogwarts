@@ -20,14 +20,8 @@ const MyPosts = (props: PostsData) => {
     let postMessageRef = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
-        // if (postMessageRef.current !== null) {
-        //     alert(postMessageRef.current.value);
-        // }
-
-        //равно
-        // alert(postMessageRef.current?.value);
-        if (postMessageRef.current) {
-            props.addPost(postMessageRef.current.value);
+        if (postMessageRef.current) { //if current === true (существует и не undefined), то следующее:
+            props.addPost(postMessageRef.current.value); //то прочитай и добавь value из textarea
             postMessageRef.current.value = '';
         }
     }

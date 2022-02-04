@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { addPost } from './redux/redux';
+import { addPost, RootStateType } from './redux/redux';
 
 
-export let rerenderEntireTree = (state) => {
+export const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <App appState={state} addPost={addPost} />

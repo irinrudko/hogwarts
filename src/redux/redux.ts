@@ -56,9 +56,9 @@ export let state: RootStateType = {
 }
 
 export let addPost = (postText: string) => {
-    let newPost: PostType = {
+    const newPost: PostType = { // типизируем объект сразу при создании
         id: 5,
-        message: postText !== undefined ? postText : '------',
+        message: postText,
         likesCount: 0
     };
     state.profilePage.postsData.push(newPost);
