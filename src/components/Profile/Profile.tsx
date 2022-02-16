@@ -12,15 +12,18 @@ type PostItem = {
 type PostsData = {
     posts: Array<PostItem>
     addPost: (postText: string) => void
+    changePostText: (messageForNewPost: string) => void
+    textPost: string
 }
+
 
 const Profile: React.FC<PostsData> = (props) => {
     return (
         <main className={style.profile}>
             <ProfileInfo />
-            <MyPosts posts={props.posts} addPost={props.addPost} />
+            <MyPosts posts={props.posts} addPost={props.addPost} textPost={props.textPost} changePostText={props.changePostText} />
         </main>
     )
 }
 
-export default Profile;
+export default Profile

@@ -13,6 +13,7 @@ import { RootStateType } from './redux/redux';
 type AppType = {
   appState: RootStateType
   addPost: (postText: string) => void
+  changePostText: (messageForNewPost: string) => void
 }
 
 const App = (props: AppType) => {
@@ -27,7 +28,8 @@ const App = (props: AppType) => {
           <NavBar />
 
           <main className='app-wrapper-content'>
-            <Route path='/profile' render={() => <Profile posts={state.profilePage.postsData} addPost={props.addPost} />} />
+            <Route path='/profile' render={() => <Profile
+              posts={state.profilePage.postsData} addPost={props.addPost} textPost={state.profilePage.messageForNewPost} changePostText={props.changePostText} />} />
             <Route path='/dialogs' render={() => <Dialogs dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} />} />
             <Route path='/friends' render={() => <Friends />} />
           </main>

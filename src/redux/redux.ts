@@ -14,6 +14,7 @@ type MessageType = {
     message: string
 }
 type ProfilePageType = {
+    messageForNewPost: string
     postsData: Array<PostType>
     // addPost?: (post: PostType) => void
 }
@@ -29,6 +30,7 @@ export type RootStateType = {
 
 export let state: RootStateType = {
     profilePage: {
+        messageForNewPost: '',
         postsData: [
             { id: 1, message: "Hi, how're you?", likesCount: 15 },
             { id: 2, message: "Hey, it's my first post", likesCount: 20 },
@@ -55,13 +57,19 @@ export let state: RootStateType = {
     },
 }
 
-export let addPost = (postText: string) => {
+export const addPost = (postText: string) => {
     const newPost: PostType = { // типизируем объект сразу при создании
         id: 5,
         message: postText,
         likesCount: 0
     };
     state.profilePage.postsData.push(newPost);
+    state.profilePage.messageForNewPost = '';
+    rerenderEntireTree(state);
+}
+
+export const changePostText = (newText: string) => {
+    state.profilePage.messageForNewPost = newText;
     rerenderEntireTree(state);
 }
 
