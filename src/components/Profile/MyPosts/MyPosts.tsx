@@ -19,11 +19,16 @@ const MyPosts = (props: PostsData) => {
     let postsElements = props.posts.map(post => <div key={post.id}> <Post message={post.message} likesCount={post.likesCount} /></div>)
 
     let addPost = () => {
-        props.addPost(props.textPost)
+        if (props.textPost.trim() !== '') {
+            props.addPost(props.textPost.trim())
+        } else {
+            alert('Please write your comment')
+        }
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.changePostText(e.currentTarget.value)
+
     }
 
 

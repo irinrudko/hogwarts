@@ -21,11 +21,16 @@
     height: 40px;
     width: 100px;
     color: white;
-    background-color: rgb(100, 182, 237);
-    border: 1px solid rgb(0, 0, 0);
+    background-color: #2D5BAA;
+    border: 1px solid rgb(70 65 65);
     border-radius: 10px;
     cursor: pointer;
     margin: 10px;
+}
+
+.button:active {
+    background-color: #4072c8;
+
 }
 
 .field {

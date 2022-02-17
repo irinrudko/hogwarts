@@ -18,7 +18,6 @@
 
 .app-wrapper-content {
   grid-area: main;
-  height: 90vh;
 }
 
 a {
