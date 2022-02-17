@@ -11,14 +11,14 @@ import { RootStateType } from './redux/redux';
 
 
 type AppType = {
-  appState: RootStateType
+  appState: () => RootStateType
   addPost: (postText: string) => void
   changePostText: (messageForNewPost: string) => void
 }
 
 const App = (props: AppType) => {
 
-  const state = props.appState;
+  const state = props.appState();
 
   return (
     <BrowserRouter>
