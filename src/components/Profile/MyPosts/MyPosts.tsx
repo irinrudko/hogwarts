@@ -29,10 +29,11 @@ const MyPosts = (props: PostsData) => {
 
     return (
         <div>
-            <div className={style.item}></div>
-            <textarea value={props.textPost} onChange={onChangeHandler} className={style.textarea}></textarea>
-            <button onClick={addPost}>add post</button>
-            <div>{postsElements}</div>
+            <div className={style.item}>
+                <textarea value={props.textPost} onChange={onChangeHandler} className={style.field}></textarea>
+                <button onClick={addPost} className={style.button}>add post</button>
+            </div>
+            <div className={style.post}>{postsElements}</div>
         </div >
     )
 }
