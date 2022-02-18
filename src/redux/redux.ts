@@ -20,14 +20,6 @@ type DialogPageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
 }
-type AddPostActionType = {
-    type: 'ADD-POST'
-    postText: string
-}
-type ChangePostTextActionType = {
-    type: 'CHANGE-POST-TEXT'
-    newText: string
-}
 
 export type ActionTypes = AddPostActionType | ChangePostTextActionType
 export type RootStateType = {
@@ -98,7 +90,7 @@ const store: StoreType = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             const newPost: PostType = { // типизируем объект сразу при создании
                 id: 5,
                 message: action.postText,
@@ -107,11 +99,35 @@ const store: StoreType = {
             this._state.profilePage.postsData.push(newPost);
             this._state.profilePage.postText = '';
             this._callSubscriber(this._state);
-        } else if (action.type === 'CHANGE-POST-TEXT') {
+        } else if (action.type === CHANGE_POST_TEXT) {
             this._state.profilePage.postText = action.newText
             this._callSubscriber(this._state);
         }
     }
 }
+
+const ADD_POST = 'ADD-POST'
+const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
+
+//Action Creators
+type AddPostActionType = ReturnType<typeof addPostAC>
+type ChangePostTextActionType = ReturnType<typeof changePostTextAC>
+//Action Creators
+
+
+export const addPostAC = (value: string) => {
+    return {
+        type: ADD_POST,
+        postText: value
+    } as const
+}
+export const changePostTextAC = (value: string) => {
+    return {
+        type: CHANGE_POST_TEXT,
+        newText: value
+    } as const
+}
+
+
 
 export default store;

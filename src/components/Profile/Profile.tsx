@@ -28,4 +28,4 @@ const Profile: React.FC<PostsData> = (props) => {
     )
 }
 
-export default Profile
+export default Profile;
