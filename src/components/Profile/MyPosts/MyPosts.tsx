@@ -1,4 +1,5 @@
 import React, { ChangeEvent, LegacyRef } from 'react';
+import { ActionTypes } from '../../../redux/redux';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
@@ -10,9 +11,10 @@ type PostItem = {
 
 type PostsData = {
     posts: Array<PostItem>
-    addPost: (postText: string) => void
-    changePostText: (messageForNewPost: string) => void
+    // addPost: (postText: string) => void
+    // changePostText: (messageForNewPost: string) => void
     textPost: string
+    dispatch: (action: ActionTypes) => any
 }
 
 const MyPosts = (props: PostsData) => {
@@ -20,15 +22,14 @@ const MyPosts = (props: PostsData) => {
 
     let addPost = () => {
         if (props.textPost.trim() !== '') {
-            props.addPost(props.textPost.trim())
+            props.dispatch({ type: 'ADD-POST', postText: props.textPost })
         } else {
             alert('Please write your comment')
         }
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changePostText(e.currentTarget.value)
-
+        props.dispatch({ type: 'CHANGE-POST-TEXT', newText: e.currentTarget.value })
     }
 
 

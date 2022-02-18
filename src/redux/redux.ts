@@ -12,7 +12,7 @@ type MessageType = {
     message: string
 }
 type ProfilePageType = {
-    messageForNewPost: string
+    postText: string
     postsData: Array<PostType>
     // addPost?: (post: PostType) => void
 }
@@ -20,11 +20,20 @@ type DialogPageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
 }
+type AddPostActionType = {
+    type: 'ADD-POST'
+    postText: string
+}
+type ChangePostTextActionType = {
+    type: 'CHANGE-POST-TEXT'
+    newText: string
+}
+
+export type ActionTypes = AddPostActionType | ChangePostTextActionType
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
 }
-
 export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
@@ -32,12 +41,14 @@ export type StoreType = {
     addPost: (postText: string) => void
     changePostText: (newText: string) => void
     subscribe: (observer: (state: RootStateType) => void) => void
+    dispatch: (action: ActionTypes) => any
 }
+
 
 const store: StoreType = {
     _state: {
         profilePage: {
-            messageForNewPost: '',
+            postText: '',
             postsData: [
                 { id: 1, message: "Hi, how're you?", likesCount: 15 },
                 { id: 2, message: "Hey, it's my first post", likesCount: 20 },
@@ -76,16 +87,31 @@ const store: StoreType = {
             likesCount: 0
         };
         this._state.profilePage.postsData.push(newPost);
-        this._state.profilePage.messageForNewPost = '';
+        this._state.profilePage.postText = '';
         this._callSubscriber(this._state);
     },
     changePostText(newText: string) {
-        this._state.profilePage.messageForNewPost = newText;
+        this._state.profilePage.postText = newText;
         this._callSubscriber(this._state);
     },
     subscribe(observer: (state: RootStateType) => void) {
         this._callSubscriber = observer
     },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            const newPost: PostType = { // типизируем объект сразу при создании
+                id: 5,
+                message: action.postText,
+                likesCount: 0
+            };
+            this._state.profilePage.postsData.push(newPost);
+            this._state.profilePage.postText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'CHANGE-POST-TEXT') {
+            this._state.profilePage.postText = action.newText
+            this._callSubscriber(this._state);
+        }
+    }
 }
 
 export default store;
