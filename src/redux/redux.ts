@@ -14,14 +14,46 @@ type MessageType = {
 type ProfilePageType = {
     postText: string
     postsData: Array<PostType>
-    // addPost?: (post: PostType) => void
 }
 type DialogPageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
+    messageText: string
 }
 
-export type ActionTypes = AddPostActionType | ChangePostTextActionType
+const ADD_POST = 'ADD-POST'
+const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
+
+export const addPostAC = (value: string) => {
+    return {
+        type: ADD_POST,
+        postText: value
+    } as const
+}
+export const changePostTextAC = (value: string) => {
+    return {
+        type: CHANGE_POST_TEXT,
+        newText: value
+    } as const
+}
+export const sendMessageAC = (messageText: string) => {
+    return {
+        type: SEND_MESSAGE,
+        messageText: messageText
+    } as const
+}
+export const updateMessageAC = (messageBody: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY,
+        messageBody: messageBody
+    } as const
+}
+
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC>
+
+
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
@@ -62,8 +94,9 @@ const store: StoreType = {
                 { id: 2, message: "how're you?", },
                 { id: 3, message: "Check some pics of Lena", },
                 { id: 4, message: "Check it out dude", },
-                { id: 5, message: "any news?", },
+                { id: 5, message: '', },
             ],
+            messageText: '',
         },
     },
     getState() {
@@ -102,32 +135,17 @@ const store: StoreType = {
         } else if (action.type === CHANGE_POST_TEXT) {
             this._state.profilePage.postText = action.newText
             this._callSubscriber(this._state);
+        } else if (action.type === SEND_MESSAGE) {
+            const newMessage = { id: 6, message: action.messageText }
+            this._state.dialogsPage.messagesData.push(newMessage)
+            this._state.dialogsPage.messageText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialogsPage.messageText = action.messageBody;
+            this._callSubscriber(this._state)
         }
     }
 }
-
-const ADD_POST = 'ADD-POST'
-const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
-
-//Action Creators
-type AddPostActionType = ReturnType<typeof addPostAC>
-type ChangePostTextActionType = ReturnType<typeof changePostTextAC>
-//Action Creators
-
-
-export const addPostAC = (value: string) => {
-    return {
-        type: ADD_POST,
-        postText: value
-    } as const
-}
-export const changePostTextAC = (value: string) => {
-    return {
-        type: CHANGE_POST_TEXT,
-        newText: value
-    } as const
-}
-
 
 
 export default store;
