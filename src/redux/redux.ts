@@ -41,6 +41,8 @@ export const changePostTextAC = (value: string) => {
         newText: value
     } as const
 }
+
+
 export const sendMessageAC = (messageText: string) => {
     return {
         type: SEND_MESSAGE,

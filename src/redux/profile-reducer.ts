@@ -22,3 +22,4 @@ export const profileReducer = (state: ProfilePageType, action: ActionTypes): Pro
         default: return state
     }
 }
+
