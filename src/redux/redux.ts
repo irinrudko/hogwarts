@@ -1,4 +1,7 @@
-type PostType = {
+import { dialogsReducer } from "./dialogs-reducer"
+import { profileReducer } from "./profile-reducer"
+
+export type PostType = {
     id: number
     message: string
     likesCount: number
@@ -11,11 +14,11 @@ type MessageType = {
     id: number
     message: string
 }
-type ProfilePageType = {
+export type ProfilePageType = {
     postText: string
     postsData: Array<PostType>
 }
-type DialogPageType = {
+export type DialogPageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
     messageText: string
@@ -123,27 +126,10 @@ const store: StoreType = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            const newPost: PostType = { // типизируем объект сразу при создании
-                id: 5,
-                message: action.postText,
-                likesCount: 0
-            };
-            this._state.profilePage.postsData.push(newPost);
-            this._state.profilePage.postText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === CHANGE_POST_TEXT) {
-            this._state.profilePage.postText = action.newText
-            this._callSubscriber(this._state);
-        } else if (action.type === SEND_MESSAGE) {
-            const newMessage = { id: 6, message: action.messageText }
-            this._state.dialogsPage.messagesData.push(newMessage)
-            this._state.dialogsPage.messageText = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.messageText = action.messageBody;
-            this._callSubscriber(this._state)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+
+        this._callSubscriber(this._state)
     }
 }
 
