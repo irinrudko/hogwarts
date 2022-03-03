@@ -9,6 +9,7 @@ import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { ReduxStateType } from './redux/redux-store';
 import store, { ActionTypes, DialogPageType, ProfilePageType } from './redux/redux';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 
 type AppType = {
@@ -29,7 +30,7 @@ const App = (props: AppType) => {
           <main className='app-wrapper-content'>
             <Route path='/profile' render={() => <Profile
               posts={state.profilePage.postsData} dispatch={props.dispatch} textPost={state.profilePage.postText} />} />
-            <Route path='/dialogs' render={() => <Dialogs dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} messageText={state.dialogsPage.messageText}
+            <Route path='/dialogs' render={() => <DialogsContainer dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} messageText={state.dialogsPage.messageText}
               dispatch={props.dispatch} />} />
             <Route path='/friends' render={() => <Friends />} />
           </main>

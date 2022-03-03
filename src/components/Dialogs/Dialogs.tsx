@@ -18,7 +18,6 @@ type MessageItemType = {
 type DialogsType = {
     dialogs: Array<DialogItemType>
     messages: Array<MessageItemType>
-
     messageText: string
     sendMessage: (text: string) => void
     onChange: (text: string) => void
