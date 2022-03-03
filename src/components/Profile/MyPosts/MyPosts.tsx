@@ -16,23 +16,23 @@ type PostsData = {
     posts: Array<PostItem>
 }
 
-const MyPosts = (props: PostsData) => {
-    let postsElements = props.posts.map(post => <div key={post.id}> <Post message={post.message} likesCount={post.likesCount} /></div>)
+const MyPosts: React.FC<PostsData> = ({ addPost, changePostText, textPost, posts }) => {
+    let postsElements = posts.map(post => <div key={post.id}> <Post message={post.message} likesCount={post.likesCount} /></div>)
 
-    let addPost = () => {
-        props.addPost(props.textPost)
+    let onAddPost = () => {
+        addPost(textPost)
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value;
-        props.changePostText(text)
+        changePostText(text)
     }
 
     return (
         <div>
             <div className={style.item}>
-                <textarea value={props.textPost} onChange={onChangeHandler} className={style.field}></textarea>
-                <button onClick={addPost} className={style.button}>add post</button>
+                <textarea value={textPost} onChange={onChangeHandler} className={style.field}></textarea>
+                <button onClick={onAddPost} className={style.button}>add post</button>
             </div>
             <div className={style.post}>{postsElements}</div>
         </div >
