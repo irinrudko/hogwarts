@@ -12,10 +12,8 @@ type PostItem = {
 
 type PostsData = {
     posts: Array<PostItem>
-    // addPost: (postText: string) => void
-    // changePostText: (messageForNewPost: string) => void
     textPost: string
-    dispatch: (action: ActionTypes) => any
+    dispatch: (action: ActionTypes) => void
 }
 
 

@@ -14,7 +14,7 @@ type PostsData = {
     // addPost: (postText: string) => void
     // changePostText: (messageForNewPost: string) => void
     textPost: string
-    dispatch: (action: ActionTypes) => any
+    dispatch: (action: ActionTypes) => void
 }
 
 const MyPosts = (props: PostsData) => {

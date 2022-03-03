@@ -7,21 +7,20 @@ import NavBar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { ActionTypes, RootStateType } from './redux/redux';
+import { ReduxStateType } from './redux/redux-store';
+import { ActionTypes, DialogPageType, ProfilePageType } from './redux/redux';
 
 
 type AppType = {
-  appState: () => RootStateType
-  // addPost: (postText: string) => void
-  // changePostText: (messageForNewPost: string) => void
-  dispatch: (action: ActionTypes) => any
+  appState: () => ReduxStateType
+  dispatch: (action: ActionTypes) => void
 }
 
 const App = (props: AppType) => {
-
   const state = props.appState();
 
   return (
+
     <BrowserRouter>
       <div className="site-wrapper">
         <div className='app-wrapper'>

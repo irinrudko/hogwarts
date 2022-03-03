@@ -21,7 +21,7 @@ type DialogsType = {
     dialogs: Array<DialogItemType>
     messages: Array<MessageItemType>
     messageText: string
-    dispatch: (action: ActionTypes) => any
+    dispatch: (action: ActionTypes) => void
 
 }
 
