@@ -24,17 +24,16 @@ type DialogsType = {
 }
 
 
-const Dialogs: React.FC<DialogsType> = (props) => {
-    let dialogsElements = props.dialogs.map(dialog => (<div key={dialog.id}> <DialogItem name={dialog.name} id={dialog.id} /></div>))
-    let messagesElements = props.messages.map(el => <div key={el.id}><Message message={el.message} /></div>)
+const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMessage, onChange }) => {
+    let dialogsElements = dialogs.map(dialog => (<div key={dialog.id}> <DialogItem name={dialog.name} id={dialog.id} /></div>))
+    let messagesElements = messages.map(el => <div key={el.id}><Message message={el.message} /></div>)
 
 
-    const messageValue = props.messageText;
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.onChange(e.currentTarget.value)
+        onChange(e.currentTarget.value)
     }
     const onSendMessageClick = () => {
-        props.sendMessage(messageValue)
+        sendMessage(messageText)
     }
 
     return (
@@ -43,7 +42,7 @@ const Dialogs: React.FC<DialogsType> = (props) => {
             <div className={style.chats}>
                 <div>{messagesElements}
                     <div className={style.item}>
-                        <textarea value={messageValue}
+                        <textarea value={messageText}
                             onChange={onChangeHandler}
                             placeholder='enter your message'>
                         </textarea>
