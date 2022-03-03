@@ -35,7 +35,7 @@ const DialogsContainer: React.FC<DialogsType> = (props) => {
     }
 
     return (
-        <Dialogs sendMessage={sendMessage} messageText={props.messageText} onChange={onChangeHandler} dialogs={props.dialogs} messages={props.messages} />
+        <Dialogs sendMessage={sendMessage} messageText={props.messageText} onChange={onChangeHandler} dialogs={props.dialogs} messages={props.messages} placeholder={'enter your message'} />
     )
 }
 
