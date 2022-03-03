@@ -1,6 +1,4 @@
-import { type } from 'os';
 import React, { ChangeEvent } from 'react';
-import { NavLink } from 'react-router-dom';
 import style from './Dialogs.module.css';
 
 import DialogItem from './DialogItem/DialogItem';
@@ -20,9 +18,10 @@ type MessageItemType = {
 type DialogsType = {
     dialogs: Array<DialogItemType>
     messages: Array<MessageItemType>
-    messageText: string
-    dispatch: (action: ActionTypes) => void
 
+    messageText: string
+    sendMessage: (text: string) => void
+    onChange: (text: string) => void
 }
 
 
@@ -33,14 +32,10 @@ const Dialogs: React.FC<DialogsType> = (props) => {
 
     const messageValue = props.messageText;
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateMessageAC(e.currentTarget.value))
+        props.onChange(e.currentTarget.value)
     }
     const onSendMessageClick = () => {
-        if (props.messageText.trim() !== '') {
-            props.dispatch(sendMessageAC(messageValue))
-        } else {
-            alert('Please write your message')
-        }
+        props.sendMessage(messageValue)
     }
 
     return (
@@ -48,7 +43,6 @@ const Dialogs: React.FC<DialogsType> = (props) => {
             <div className={style.people}>{dialogsElements}</div>
             <div className={style.chats}>
                 <div>{messagesElements}
-
                     <div className={style.item}>
                         <textarea value={messageValue}
                             onChange={onChangeHandler}
