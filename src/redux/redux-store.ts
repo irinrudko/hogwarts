@@ -7,12 +7,11 @@ let rootReducers = combineReducers({
     dialogsPage: dialogsReducer
 })
 
-type RootReducersType = typeof rootReducers;
+type RootState = typeof rootReducers;
 
 let store = createStore(rootReducers);
 
-export type ReduxStateType = ReturnType<RootReducersType>
-
+export type ReduxStateType = ReturnType<RootState>
 
 export default store;
 

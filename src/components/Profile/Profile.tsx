@@ -3,6 +3,7 @@ import style from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import { ActionTypes } from '../../redux/redux';
+import MyPostsContainer from './MyPosts/MyPostsContainter';
 
 type PostItem = {
     id: number
@@ -21,7 +22,7 @@ const Profile: React.FC<PostsData> = (props) => {
     return (
         <main className={style.profile}>
             <ProfileInfo />
-            <MyPosts posts={props.posts} textPost={props.textPost} dispatch={props.dispatch} />
+            <MyPostsContainer posts={props.posts} textPost={props.textPost} dispatch={props.dispatch} />
         </main>
     )
 }

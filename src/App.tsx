@@ -8,7 +8,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { ReduxStateType } from './redux/redux-store';
-import { ActionTypes, DialogPageType, ProfilePageType } from './redux/redux';
+import store, { ActionTypes, DialogPageType, ProfilePageType } from './redux/redux';
 
 
 type AppType = {
@@ -20,7 +20,6 @@ const App = (props: AppType) => {
   const state = props.appState();
 
   return (
-
     <BrowserRouter>
       <div className="site-wrapper">
         <div className='app-wrapper'>

@@ -10,26 +10,22 @@ type PostItem = {
 }
 
 type PostsData = {
-    posts: Array<PostItem>
-    // addPost: (postText: string) => void
-    // changePostText: (messageForNewPost: string) => void
+    addPost: (textPost: string) => void
+    changePostText: (text: string) => void
     textPost: string
-    dispatch: (action: ActionTypes) => void
+    posts: Array<PostItem>
 }
 
 const MyPosts = (props: PostsData) => {
     let postsElements = props.posts.map(post => <div key={post.id}> <Post message={post.message} likesCount={post.likesCount} /></div>)
 
     let addPost = () => {
-        if (props.textPost.trim() !== '') {
-            props.dispatch(addPostAC(props.textPost))
-        } else {
-            alert('Please write your comment')
-        }
+        props.addPost(props.textPost)
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(changePostTextAC(e.currentTarget.value))
+        let text = e.currentTarget.value;
+        props.changePostText(text)
     }
 
     return (
