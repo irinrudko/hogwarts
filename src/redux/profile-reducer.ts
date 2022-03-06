@@ -1,7 +1,9 @@
-import React from "react";
 import { ActionTypes, PostType, ProfilePageType } from "./redux";
 const ADD_POST = 'ADD-POST'
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
+
+//TODO
+//покрыть редьюсеры тестами
 
 
 const initialState: ProfilePageType = {

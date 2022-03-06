@@ -4,17 +4,18 @@ import './App.css';
 import Header from './components/Header/Header';
 import Profile from './components/Profile/Profile';
 import NavBar from './components/Navbar/Navbar';
-import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { ReduxStateType } from './redux/redux-store';
-import store, { ActionTypes, DialogPageType, ProfilePageType } from './redux/redux';
+import { ActionTypes } from './redux/redux';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import { Store } from 'redux';
 
 
 type AppType = {
   appState: () => ReduxStateType
   dispatch: (action: ActionTypes) => void
+  store: Store<ReduxStateType, ActionTypes>
 }
 
 const App = (props: AppType) => {
@@ -29,7 +30,7 @@ const App = (props: AppType) => {
 
           <main className='app-wrapper-content'>
             <Route path='/profile' render={() => <Profile
-              posts={state.profilePage.postsData} dispatch={props.dispatch} textPost={state.profilePage.postText} />} />
+              posts={state.profilePage.postsData} dispatch={props.dispatch} textPost={state.profilePage.postText} store={props.store} />} />
             <Route path='/dialogs' render={() => <DialogsContainer dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} messageText={state.dialogsPage.messageText}
               dispatch={props.dispatch} />} />
             <Route path='/friends' render={() => <Friends />} />

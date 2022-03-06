@@ -9,7 +9,7 @@ import store from './redux/redux-store';
 const rerenderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App appState={store.getState.bind(store)} dispatch={store.dispatch.bind(store)} />
+            <App appState={store.getState.bind(store)} dispatch={store.dispatch.bind(store)} store={store} />
         </React.StrictMode>,
         document.getElementById('root')
     );

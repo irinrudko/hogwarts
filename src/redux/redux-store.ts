@@ -9,10 +9,10 @@ let rootReducers = combineReducers({
 
 type RootState = typeof rootReducers;
 
-let store = createStore(rootReducers);
 
 export type ReduxStateType = ReturnType<RootState>
 
+let store = createStore(rootReducers);
 export default store;
 
 
