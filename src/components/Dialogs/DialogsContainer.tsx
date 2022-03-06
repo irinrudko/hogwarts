@@ -3,6 +3,7 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { ActionTypes, sendMessageAC, updateMessageAC } from '../../redux/redux';
 import Dialogs from './Dialogs';
+import { StoreContext } from '../../StoreContext';
 
 type DialogItemType = {
     id: number
@@ -23,19 +24,28 @@ type DialogsType = {
 
 
 const DialogsContainer: React.FC<DialogsType> = (props) => {
-    const onChangeHandler = (text: string) => {
-        props.dispatch(updateMessageAC(text))
-    }
-    const sendMessage = (text: string) => {
-        if (props.messageText.trim() !== '') {
-            props.dispatch(sendMessageAC(text))
-        } else {
-            alert('Please write your message')
-        }
-    }
-
     return (
-        <Dialogs sendMessage={sendMessage} messageText={props.messageText} onChange={onChangeHandler} dialogs={props.dialogs} messages={props.messages} placeholder={'enter your message'} />
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    let state = store.getState();
+
+                    const onChangeHandler = (text: string) => {
+                        store.dispatch(updateMessageAC(text))
+                    }
+                    const sendMessage = (text: string) => {
+                        if (props.messageText.trim() !== '') {
+                            store.dispatch(sendMessageAC(text))
+                        } else {
+                            alert('Please write your message')
+                        }
+                    }
+
+                    return (
+                        <Dialogs sendMessage={sendMessage} messageText={state.dialogsPage.messageText} onChange={onChangeHandler} dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} placeholder={'enter your message'} />
+                    )
+                }}
+        </StoreContext.Consumer>
     )
 }
 
