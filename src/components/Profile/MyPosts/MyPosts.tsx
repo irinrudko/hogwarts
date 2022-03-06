@@ -1,5 +1,4 @@
 import React, { ChangeEvent, LegacyRef } from 'react';
-import { ActionTypes, addPostAC, changePostTextAC } from '../../../redux/redux';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 

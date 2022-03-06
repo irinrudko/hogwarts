@@ -1,6 +1,5 @@
-import React, { ChangeEvent } from 'react';
-import { ActionTypes, addPostAC, changePostTextAC } from '../../../redux/redux';
-import { ReduxStateType } from '../../../redux/redux-store';
+import React from 'react';
+import { addPostAC, changePostTextAC } from '../../../redux/redux';
 import { StoreContext } from '../../../StoreContext';
 import MyPosts from './MyPosts';
 

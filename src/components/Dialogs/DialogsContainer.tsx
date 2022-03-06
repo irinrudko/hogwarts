@@ -1,11 +1,7 @@
-import React, { ChangeEvent } from 'react';
-import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
-import { ActionTypes, sendMessageAC, updateMessageAC } from '../../redux/redux';
+import React from 'react';
+import { sendMessageAC, updateMessageAC } from '../../redux/redux';
 import Dialogs from './Dialogs';
 import { StoreContext } from '../../StoreContext';
-
-
 
 const DialogsContainer = () => {
     return (
