@@ -22,7 +22,7 @@ type PostsData = {
 }
 
 
-const Profile: React.FC<PostsData> = (props) => {
+const Profile: React.FC<PostsData> = () => {
     return (
         <main className={style.profile}>
             <ProfileInfo />
