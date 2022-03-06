@@ -26,7 +26,7 @@ const Profile: React.FC<PostsData> = (props) => {
     return (
         <main className={style.profile}>
             <ProfileInfo />
-            <MyPostsContainer posts={props.posts} textPost={props.textPost} dispatch={props.dispatch} />
+            <MyPostsContainer />
         </main>
     )
 }
