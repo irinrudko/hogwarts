@@ -5,36 +5,20 @@ import { ActionTypes, sendMessageAC, updateMessageAC } from '../../redux/redux';
 import Dialogs from './Dialogs';
 import { StoreContext } from '../../StoreContext';
 
-type DialogItemType = {
-    id: number
-    name: string
-}
-
-type MessageItemType = {
-    id: number
-    message: string
-}
-
-type DialogsType = {
-    dialogs: Array<DialogItemType>
-    messages: Array<MessageItemType>
-    messageText: string
-    dispatch: (action: ActionTypes) => void
-}
 
 
-const DialogsContainer: React.FC<DialogsType> = (props) => {
+const DialogsContainer = () => {
     return (
         <StoreContext.Consumer>
             {
                 (store) => {
-                    let state = store.getState();
+                    const state = store.getState();
 
                     const onChangeHandler = (text: string) => {
                         store.dispatch(updateMessageAC(text))
                     }
                     const sendMessage = (text: string) => {
-                        if (props.messageText.trim() !== '') {
+                        if (state.dialogsPage.messageText.trim() !== '') {
                             store.dispatch(sendMessageAC(text))
                         } else {
                             alert('Please write your message')

@@ -31,8 +31,7 @@ const App = (props: AppType) => {
           <main className='app-wrapper-content'>
             <Route path='/profile' render={() => <Profile
               posts={state.profilePage.postsData} dispatch={props.dispatch} textPost={state.profilePage.postText} store={props.store} />} />
-            <Route path='/dialogs' render={() => <DialogsContainer dialogs={state.dialogsPage.dialogsData} messages={state.dialogsPage.messagesData} messageText={state.dialogsPage.messageText}
-              dispatch={props.dispatch} />} />
+            <Route path='/dialogs' render={() => <DialogsContainer />} />
             <Route path='/friends' render={() => <Friends />} />
           </main>
         </div>
