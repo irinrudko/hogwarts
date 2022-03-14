@@ -1,18 +1,16 @@
+import { v1 } from "uuid";
 import { ActionTypes, PostType, ProfilePageType } from "./redux";
 const ADD_POST = 'ADD-POST'
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
-
-//TODO
-//покрыть редьюсеры тестами
 
 
 const initialState: ProfilePageType = {
     postText: '',
     postsData: [
-        { id: 1, message: "Hi, how're you?", likesCount: 15 },
-        { id: 2, message: "Hey, it's my first post", likesCount: 20 },
-        { id: 3, message: "Hey, it's my second post here", likesCount: 2 },
-        { id: 4, message: "This is a mapped post", likesCount: 1000 },
+        { id: v1(), message: "Hi, how're you?", likesCount: 15 },
+        { id: v1(), message: "Hey, it's my first post", likesCount: 20 },
+        { id: v1(), message: "Hey, it's my second post here", likesCount: 2 },
+        { id: v1(), message: "This is a mapped post", likesCount: 1000 },
     ],
 };
 
@@ -20,7 +18,7 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
     switch (action.type) {
         case ADD_POST:
             const newPost: PostType = { // типизируем объект сразу при создании
-                id: 5,
+                id: v1(),
                 message: action.postText,
                 likesCount: 0
             };
