@@ -3,7 +3,7 @@ import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
 type PostItem = {
-    id: number
+    id: string
     message: string
     likesCount: number
 }

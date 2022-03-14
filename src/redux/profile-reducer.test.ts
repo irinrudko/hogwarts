@@ -31,5 +31,4 @@ test('correct post should change its name', () => {
     }
 
     const endState = profileReducer(startState, { type: 'CHANGE-POST-TEXT', newText: newPostText })
-
 })

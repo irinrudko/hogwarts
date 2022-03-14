@@ -4,12 +4,12 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 
 type DialogItemType = {
-    id: number
+    id: string
     name: string
 }
 
 type MessageItemType = {
-    id: number
+    id: string
     message: string
 }
 

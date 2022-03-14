@@ -7,7 +7,7 @@ import { Store } from 'redux';
 import { ReduxStateType } from '../../redux/redux-store';
 
 type PostItem = {
-    id: number
+    id: string
     message: string
     likesCount: number
 }
