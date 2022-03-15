@@ -19,11 +19,10 @@ type DialogsType = {
     messageText: string
     sendMessage: (text: string) => void
     onChange: (text: string) => void
-    placeholder: string
 }
 
 
-const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMessage, onChange, placeholder }) => {
+const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMessage, onChange }) => {
     let dialogsElements = dialogs.map(dialog => (<div key={dialog.id}> <DialogItem name={dialog.name} id={dialog.id} /></div>))
     let messagesElements = messages.map(el => <div key={el.id}><Message message={el.message} /></div>)
 
@@ -42,8 +41,7 @@ const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMe
                 <div>{messagesElements}
                     <div className={style.item}>
                         <textarea value={messageText}
-                            onChange={onChangeHandler}
-                            placeholder={placeholder}>
+                            onChange={onChangeHandler}>
                         </textarea>
                         <div><button onClick={onSendMessageClick}>Send</button></div>
                     </div>

@@ -1,3 +1,4 @@
+import { isDoStatement } from "typescript";
 import { v1 } from "uuid";
 import { ActionTypes, DialogPageType } from "./redux";
 
@@ -28,18 +29,18 @@ export const dialogsReducer = (state: DialogPageType = initialState, action: Act
     switch (action.type) {
         case SEND_MESSAGE:
             const newMessage = { id: v1(), message: action.messageText }
-            state.messagesData.push(newMessage)
-            state.messageText = ''
-
-            return state;
-
+            return {
+                ...state,
+                messagesData: [...state.messagesData, newMessage],
+                messageText: ''
+            }
         case UPDATE_NEW_MESSAGE_BODY:
-            state.messageText = action.messageBody;
-            return state;
-
+            return {
+                ...state,
+                messageText: action.messageBody
+            }
 
         default: return state
     }
-
 }
 
