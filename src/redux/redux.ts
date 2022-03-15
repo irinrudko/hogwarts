@@ -15,6 +15,19 @@ type MessageType = {
     id: string
     message: string
 }
+
+type UserLocationType = {
+    city: string
+    country: string
+}
+type UserType = {
+    id: string
+    isSubscibed: boolean
+    name: string
+    surname: string
+    status: string
+    location: UserLocationType
+}
 export type ProfilePageType = {
     postText: string
     postsData: Array<PostType>
@@ -23,6 +36,10 @@ export type DialogPageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
     messageText: string
+}
+
+export type UsersPageType = {
+    people: Array<UserType>
 }
 
 const ADD_POST = 'ADD-POST'
