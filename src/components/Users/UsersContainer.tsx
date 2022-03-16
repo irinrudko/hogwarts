@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { ActionTypes, followUserAC, unfollowUserAC } from "../../redux/redux";
+import { ActionTypes, followUserAC, setUersAC, unfollowUserAC, UserType } from "../../redux/redux";
 import { ReduxStateType } from "../../redux/redux-store";
 import Users from "./Users";
 
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch: (action: ActionTypes) => void) => {
         },
         unfollowUser: (userId: number) => {
             dispatch(unfollowUserAC(userId))
+        },
+        setUsers: (users: UserType[]) => {
+            dispatch(setUersAC(users))
         }
     }
 }

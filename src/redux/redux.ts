@@ -86,7 +86,7 @@ export const unfollowUserAC = (userId: number) => {
     } as const
 }
 
-export const setUersAC = (users: [UserType]) => {
+export const setUersAC = (users: UserType[]) => {
     return {
         type: 'SET-USERS',
         users: users

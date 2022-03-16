@@ -1,13 +1,22 @@
+import axios from "axios";
 import React from "react";
 import { UserType } from "../../redux/redux";
+import userPhoto from "../../assets/images/avatar-male.png"
 
 type UserPropsType = {
     users: Array<UserType>
     followUser: (userId: number) => void
     unfollowUser: (userId: number) => void
+    setUsers: (users: UserType[]) => void
 }
 
-const Users: React.FC<UserPropsType> = ({ users, followUser, unfollowUser }) => {
+const Users: React.FC<UserPropsType> = ({ users, followUser, unfollowUser, setUsers }) => {
+
+    if (users.length === 0) {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            setUsers(response.data.items)
+        })
+    }
 
     return (<div>
         {
@@ -15,7 +24,7 @@ const Users: React.FC<UserPropsType> = ({ users, followUser, unfollowUser }) => 
 
                 return <div key={u.id}>
                     <div>
-                        {/* <img src={u.photos.small} alt="pic" /> */}
+                        <img src={u.photos.small !== null ? u.photos.small : userPhoto} alt="avatar" width={"100px"} />
                         <h2>{u.name}</h2>
                         <span>{u.status}</span>
                         <div>
