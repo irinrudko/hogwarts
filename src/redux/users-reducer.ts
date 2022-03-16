@@ -12,12 +12,12 @@ const initialState: UsersPageType = {
 export const usersReducer = (state: UsersPageType = initialState, action: ActionTypes) => {
     switch (action.type) {
         case 'FOLLOW-USER': {
-            const user: UserType = state.users.map(u => {
+            const user = state.users.map(u => {
                 if (u.id === action.id) {
                     u.followed = true;
                 }
-                return { ...state, user }
             });
+            return { ...state, user }
         }
 
 
@@ -26,8 +26,8 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
                 if (u.id === action.id) {
                     u.followed = false
                 }
-                return { ...state, users: user }
             })
+            return { ...state, users: user }
 
         }
 
