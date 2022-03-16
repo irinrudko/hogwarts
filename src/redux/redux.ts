@@ -20,7 +20,7 @@ type UserPhotoType = {
     large: string
 }
 
-type UserType = {
+export type UserType = {
     name: string
     id: number
     photos: UserPhotoType
@@ -38,7 +38,7 @@ export type DialogPageType = {
 }
 
 export type UsersPageType = {
-    people: Array<UserType>
+    users: Array<UserType>
 }
 
 const ADD_POST = 'ADD-POST'
@@ -73,7 +73,20 @@ export const updateMessageAC = (messageBody: string) => {
     } as const
 }
 
-export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC>
+export const followUser = (userId: number) => {
+    return {
+        type: 'FOLLOW-USER',
+        id: userId
+    } as const
+}
+export const unfollowUser = (userId: number) => {
+    return {
+        type: 'UNFOLLOW-USER',
+        id: userId
+    } as const
+}
+
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC> | ReturnType<typeof followUser> | ReturnType<typeof unfollowUser>
 
 
 export type RootStateType = {
