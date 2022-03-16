@@ -73,20 +73,27 @@ export const updateMessageAC = (messageBody: string) => {
     } as const
 }
 
-export const followUser = (userId: number) => {
+export const followUserAC = (userId: number) => {
     return {
         type: 'FOLLOW-USER',
-        id: userId
+        userId: userId
     } as const
 }
-export const unfollowUser = (userId: number) => {
+export const unfollowUserAC = (userId: number) => {
     return {
         type: 'UNFOLLOW-USER',
-        id: userId
+        userId: userId
     } as const
 }
 
-export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC> | ReturnType<typeof followUser> | ReturnType<typeof unfollowUser>
+export const setUersAC = (users: [UserType]) => {
+    return {
+        type: 'SET-USERS',
+        users: users
+    } as const
+}
+
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC> | ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC>
 
 
 export type RootStateType = {
@@ -160,6 +167,7 @@ const store: StoreType = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        // this._state.profilePage = profileReducer(this._state.profilePage, action)
 
         this._callSubscriber(this._state)
     }

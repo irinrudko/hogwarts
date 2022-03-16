@@ -10,7 +10,7 @@ import { ActionTypes } from './redux/redux';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
-import Users from './components/Users/Users';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 type AppType = {
@@ -34,7 +34,7 @@ const App = (props: AppType) => {
                 posts={state.profilePage.postsData} dispatch={props.dispatch} textPost={state.profilePage.postText} store={props.store} />} />
               <Route path='/dialogs' render={() => <DialogsContainer />} />
               <Route path='/friends' render={() => <Friends />} />
-              <Route path='/users' render={() => <Users />} />
+              <Route path='/users' render={() => <UsersContainer />} />
             </main>
           </div>
         </div >
