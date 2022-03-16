@@ -4,7 +4,9 @@ import { UsersPageType } from "./redux";
 const initialState: UsersPageType = {
 
     people: [
-        { id: v1(), isSubscibed: false, name: 'Pavel', surname: 'Dobry', status: 'I am ok', location: { city: 'Minsk', country: 'Belarus' } },
+        { name: "Shubert", id: 1, photos: { small: 'url', large: 'url' }, status: "That's not a dog name!!", followed: true },
+        { name: "Beethoven", id: 1, photos: { small: 'url', large: 'url' }, status: 'Cannot hear anything', followed: false },
+        { name: "Mozart", id: 1, photos: { small: 'url', large: 'url' }, status: 'Salieri seem to be a lovely guy', followed: true },
 
     ],
 };

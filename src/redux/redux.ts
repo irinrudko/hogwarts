@@ -15,18 +15,17 @@ type MessageType = {
     id: string
     message: string
 }
-
-type UserLocationType = {
-    city: string
-    country: string
+type UserPhotoType = {
+    small: string
+    large: string
 }
+
 type UserType = {
-    id: string
-    isSubscibed: boolean
     name: string
-    surname: string
+    id: number
+    photos: UserPhotoType
     status: string
-    location: UserLocationType
+    followed: boolean
 }
 export type ProfilePageType = {
     postText: string
