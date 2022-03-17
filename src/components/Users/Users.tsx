@@ -11,10 +11,8 @@ type UserPropsType = {
 }
 
 class User extends React.Component<UserPropsType> {
-    constructor(props: UserPropsType) {
-        super(props);
-        alert('NEW')
 
+    componentDidMount = () => {
         axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
             this.props.setUsers(response.data.items)
         })
