@@ -15,10 +15,10 @@ it('should follow the correct user', () => {
     const endState = usersReducer(startState, { type: 'FOLLOW-USER', userId })
 
     expect(endState.users[2].id).toBe(3)
-    expect(endState.users[2].followed).toBeTruthy
+    expect(endState.users[2].followed).toBeTruthy()
     //проверка, что в другом месте нигде не полетело
-    expect(endState.users[0].followed).toBeTruthy
-    expect(endState.users[1].followed).toBeFalsy
+    expect(endState.users[0].followed).toBeTruthy()
+    expect(endState.users[1].followed).toBeFalsy()
 })
 
 
@@ -36,7 +36,7 @@ it('should unfollow the correct user', () => {
     const endState = usersReducer(startState, { type: 'UNFOLLOW-USER', userId: _id })
 
     expect(endState.users[0].id).toBe(1)
-    expect(endState.users[0].followed).toBeFalsy
-    expect(endState.users[1].followed).toBeFalsy
-    expect(endState.users[2].followed).toBeFalsy
+    expect(endState.users[0].followed).toBeFalsy()
+    expect(endState.users[1].followed).toBeFalsy()
+    expect(endState.users[2].followed).toBeFalsy()
 })
