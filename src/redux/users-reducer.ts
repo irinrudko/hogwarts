@@ -1,5 +1,5 @@
 import { v1 } from "uuid";
-import { ActionTypes, UsersPageType, UserType } from "./redux";
+import { ActionTypes, UsersPageType } from "./redux";
 
 const initialState: UsersPageType = {
     users: []
@@ -12,7 +12,6 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.userId && u.followed === false) {
-
                         return { ...u, followed: true }
                     }
                     return u
