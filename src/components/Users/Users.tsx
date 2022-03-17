@@ -10,34 +10,38 @@ type UserPropsType = {
     setUsers: (users: UserType[]) => void
 }
 
-const Users: React.FC<UserPropsType> = ({ users, followUser, unfollowUser, setUsers }) => {
+class User extends React.Component<UserPropsType> {
+    constructor(props: UserPropsType) {
+        super(props);
+        alert('NEW')
 
-    if (users.length === 0) {
         axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            setUsers(response.data.items)
+            this.props.setUsers(response.data.items)
         })
     }
 
-    return (<div>
-        {
-            users.map(u => {
+    render = () => {
+        return (<div>
+            {
+                this.props.users.map(u => {
 
-                return <div key={u.id}>
-                    <div>
-                        <img src={u.photos.small !== null ? u.photos.small : userPhoto} alt="avatar" width={"100px"} />
-                        <h2>{u.name}</h2>
-                        <span>{u.status}</span>
+                    return <div key={u.id}>
                         <div>
-                            {u.followed
-                                ? <button onClick={() => unfollowUser(u.id)}>Unfollow</button>
-                                : <button onClick={() => followUser(u.id)}>Follow</button>}
+                            <img src={u.photos.small !== null ? u.photos.small : userPhoto} alt="avatar" width={"70px"} />
+                            <h2>{u.name}</h2>
+                            <span>{u.status}</span>
+                            <div>
+                                {u.followed
+                                    ? <button onClick={() => this.props.unfollowUser(u.id)}>Unfollow</button>
+                                    : <button onClick={() => this.props.followUser(u.id)}>Follow</button>}
 
+                            </div>
                         </div>
                     </div>
-                </div>
-            })
-        }
-    </div>)
+                })
+            }
+        </div >)
+    }
 }
 
-export default Users;
+export default User;
