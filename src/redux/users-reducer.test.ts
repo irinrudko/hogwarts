@@ -1,7 +1,7 @@
 import { UsersPageType } from "./redux"
 import { usersReducer } from "./users-reducer"
 
-test('should follow the correct user', () => {
+it('should follow the correct user', () => {
     let userId = 3;
 
     const startState: UsersPageType = {
@@ -22,7 +22,7 @@ test('should follow the correct user', () => {
 })
 
 
-test('should unfollow the correct user', () => {
+it('should unfollow the correct user', () => {
     let _id = 1;
 
     const startState: UsersPageType = {
