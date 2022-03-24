@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { ActionTypes, followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, unfollowUserAC, UserType } from "../../redux/redux";
 import { ReduxStateType } from "../../redux/redux-store";
-import Users from "./Users";
+import UsersAPI from "./UsersAPI";
 
 const mapStateToProps = (state: ReduxStateType) => {
     return {
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch: (action: ActionTypes) => void) => {
 }
 
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI)
 
 export default UsersContainer;
 

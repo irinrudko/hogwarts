@@ -4,7 +4,7 @@ import { ActionTypes, UsersPageType } from "./redux";
 const initialState: UsersPageType = {
     users: [],
     totalUsersCount: 0,
-    pageSize: 10,
+    pageSize: 3,
     currentPage: 1,
 };
 
