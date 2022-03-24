@@ -2,7 +2,8 @@ import axios from "axios";
 import React from "react";
 import { UserType } from "../../redux/redux";
 import style from '../Users/Users.module.css'
-import { Users } from "./Users";
+import { Users } from './Users';
+import preloader from '../../assets/icons/preloader.svg'
 
 type UserAPIType = {
     users: Array<UserType>
@@ -14,6 +15,7 @@ type UserAPIType = {
     setUsers: (users: UserType[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalUsersCount: number) => void
+    isFetching: boolean
 }
 
 class UsersAPI extends React.Component<UserAPIType> {
@@ -49,12 +51,17 @@ class UsersAPI extends React.Component<UserAPIType> {
         })
 
 
-        return (
+        return <>
+            {this.props.isFetching
+                ? <img src={preloader} alt="Please wait. The data is uploading" />
+                : ''}
+
             <Users pageNumbers={mappedPages}
                 users={this.props.users}
                 followUser={this.props.followUser}
                 unfollowUser={this.props.unfollowUser} />
-        )
+        </>
+
     }
 }
 

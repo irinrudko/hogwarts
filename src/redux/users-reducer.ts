@@ -1,14 +1,14 @@
-import { v1 } from "uuid";
-import { ActionTypes, UsersPageType } from "./redux";
+import { UsersActionTypes, UsersPageType } from "./redux";
 
 const initialState: UsersPageType = {
     users: [],
     totalUsersCount: 0,
     pageSize: 3,
     currentPage: 1,
+    isFetching: false
 };
 
-export const usersReducer = (state: UsersPageType = initialState, action: ActionTypes): UsersPageType => {
+export const usersReducer = (state: UsersPageType = initialState, action: UsersActionTypes): UsersPageType => {
     switch (action.type) {
         case 'FOLLOW-USER':
             return {

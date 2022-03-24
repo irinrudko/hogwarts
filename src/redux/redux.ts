@@ -42,6 +42,8 @@ export type UsersPageType = {
     totalUsersCount: number
     pageSize: number
     currentPage: number
+    isFetching: boolean
+
 }
 
 const ADD_POST = 'ADD-POST'
@@ -109,7 +111,11 @@ export const setTotalUsersCountAC = (totalUsersCount: number) => {
     } as const
 }
 
-export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC> | ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC> | ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC>
+export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC>
+
+export type DialogsActionTypes = ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC>
+
+export type UsersActionTypes = ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC> | ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC>
 
 
 export type RootStateType = {
@@ -123,7 +129,7 @@ export type StoreType = {
     addPost: (postText: string) => void
     changePostText: (newText: string) => void
     subscribe: (observer: (state: RootStateType) => void) => void
-    dispatch: (action: ActionTypes) => any
+    dispatch: (action: any) => any
 }
 
 

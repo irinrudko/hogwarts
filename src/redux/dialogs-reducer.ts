@@ -1,6 +1,5 @@
-import { isDoStatement } from "typescript";
 import { v1 } from "uuid";
-import { ActionTypes, DialogPageType } from "./redux";
+import { DialogPageType, DialogsActionTypes } from "./redux";
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 const SEND_MESSAGE = 'SEND-MESSAGE'
@@ -24,7 +23,7 @@ const initialState: DialogPageType = {
     messageText: '',
 }
 
-export const dialogsReducer = (state: DialogPageType = initialState, action: ActionTypes): DialogPageType => {
+export const dialogsReducer = (state: DialogPageType = initialState, action: DialogsActionTypes): DialogPageType => {
 
     switch (action.type) {
         case SEND_MESSAGE:
