@@ -3,7 +3,7 @@ import React from "react";
 import { UserType } from "../../redux/redux";
 import style from '../Users/Users.module.css'
 import { Users } from './Users';
-import preloader from '../../assets/icons/preloader.svg'
+import { Preloader } from "../common/Preloader/Preloader";
 
 type UserAPIType = {
     users: Array<UserType>
@@ -28,9 +28,7 @@ class UsersAPI extends React.Component<UserAPIType> {
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
             this.props.toggleIsFetchingAC(false)
-
         })
-
     }
 
     getNewUsers = (pageNumber: number) => {
@@ -64,7 +62,7 @@ class UsersAPI extends React.Component<UserAPIType> {
 
         return <>
             {this.props.isFetching
-                ? <img src={preloader} alt="Please wait. The data is uploading" />
+                ? <Preloader />
                 : ''}
 
             <Users pageNumbers={mappedPages}
