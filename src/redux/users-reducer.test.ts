@@ -9,7 +9,10 @@ it('should follow the correct user', () => {
             { name: 'Shubert', id: 1, photos: { small: '', large: '' }, status: 'Hey guys', followed: true },
             { name: 'Mozart', id: 2, photos: { small: '', large: '' }, status: 'Salieri seems to be a nice guy', followed: false },
             { name: 'Beethoven', id: userId, photos: { small: '', large: '' }, status: 'Guys, I cannot hear anything!!', followed: false },
-        ]
+        ],
+        totalUsersCount: 20,
+        pageSize: 5,
+        currentPage: 2,
     }
 
     const endState = usersReducer(startState, { type: 'FOLLOW-USER', userId })
@@ -30,7 +33,10 @@ it('should unfollow the correct user', () => {
             { name: 'Shubert', id: _id, photos: { small: '', large: '' }, status: 'Hey guys', followed: true },
             { name: 'Mozart', id: 2, photos: { small: '', large: '' }, status: 'Salieri seems to be a nice guy', followed: false },
             { name: 'Beethoven', id: 3, photos: { small: '', large: '' }, status: 'Guys, I cannot hear anything!!', followed: false },
-        ]
+        ],
+        totalUsersCount: 20,
+        pageSize: 5,
+        currentPage: 2,
     }
 
     const endState = usersReducer(startState, { type: 'UNFOLLOW-USER', userId: _id })

@@ -2,7 +2,10 @@ import { v1 } from "uuid";
 import { ActionTypes, UsersPageType } from "./redux";
 
 const initialState: UsersPageType = {
-    users: []
+    users: [],
+    totalUsersCount: 0,
+    pageSize: 10,
+    currentPage: 1,
 };
 
 export const usersReducer = (state: UsersPageType = initialState, action: ActionTypes): UsersPageType => {
@@ -17,8 +20,6 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
                     return u
                 })
             }
-
-
         case 'UNFOLLOW-USER':
             return {
                 ...state,
@@ -29,10 +30,18 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
                     return u
                 })
             }
-
         case 'SET-USERS':
             return {
                 ...state, users: [...state.users, ...action.users]
+            }
+
+        case 'SET-CURRENT-PAGE':
+            return {
+                ...state, currentPage: action.currentPage
+            }
+        case 'SET-TOTAL-USERS-COUNT':
+            return {
+                ...state, totalUsersCount: action.totalUsersCount
             }
         default: return state
     }

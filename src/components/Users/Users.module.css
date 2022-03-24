@@ -1,0 +1,14 @@
+.currentPage {
+    font-weight: bold;
+    color: #2D5BAA;
+}
+
+.pageNumber {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+    max-width: 190px;
+}

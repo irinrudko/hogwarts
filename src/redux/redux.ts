@@ -39,6 +39,9 @@ export type DialogPageType = {
 
 export type UsersPageType = {
     users: Array<UserType>
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
 }
 
 const ADD_POST = 'ADD-POST'
@@ -93,7 +96,20 @@ export const setUersAC = (users: UserType[]) => {
     } as const
 }
 
-export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC> | ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC>
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: 'SET-CURRENT-PAGE',
+        currentPage
+    } as const
+}
+export const setTotalUsersCountAC = (totalUsersCount: number) => {
+    return {
+        type: 'SET-TOTAL-USERS-COUNT',
+        totalUsersCount
+    } as const
+}
+
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC> | ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC> | ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC>
 
 
 export type RootStateType = {
