@@ -1,8 +1,8 @@
 import React from 'react';
-import { ActionTypes, sendMessageAC, updateMessageAC } from '../../redux/redux';
 import Dialogs from './Dialogs';
 import { ReduxStateType } from '../../redux/redux-store';
 import { connect } from 'react-redux';
+import { DialogsActionTypes, sendMessageAC, updateMessageAC } from '../../redux/dialogs-reducer';
 
 let mapStateToProps = (state: ReduxStateType) => {
     return {
@@ -12,7 +12,7 @@ let mapStateToProps = (state: ReduxStateType) => {
     }
 }
 
-let mapDispatchToProps = (dispatch: (action: ActionTypes) => void) => {
+let mapDispatchToProps = (dispatch: (action: DialogsActionTypes) => void) => {
     return {
         sendMessage: (text: string) => {
             dispatch(sendMessageAC(text))

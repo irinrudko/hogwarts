@@ -1,6 +1,7 @@
 import { v1 } from "uuid"
-import { dialogsReducer } from "./dialogs-reducer"
-import { profileReducer } from "./profile-reducer"
+import { DialogsActionTypes, dialogsReducer } from "./dialogs-reducer"
+import { ProfileActionTypes, profileReducer } from "./profile-reducer"
+import { UsersActionTypes } from "./users-reducer"
 
 export type PostType = {
     id: string
@@ -46,78 +47,6 @@ export type UsersPageType = {
 
 }
 
-const ADD_POST = 'ADD-POST'
-const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'SEND-MESSAGE'
-
-export const addPostAC = (value: string) => {
-    return {
-        type: ADD_POST,
-        postText: value
-    } as const
-}
-export const changePostTextAC = (value: string) => {
-    return {
-        type: CHANGE_POST_TEXT,
-        newText: value
-    } as const
-}
-
-
-export const sendMessageAC = (messageText: string) => {
-    return {
-        type: SEND_MESSAGE,
-        messageText: messageText
-    } as const
-}
-export const updateMessageAC = (messageBody: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY,
-        messageBody: messageBody
-    } as const
-}
-
-export const followUserAC = (userId: number) => {
-    return {
-        type: 'FOLLOW-USER',
-        userId: userId
-    } as const
-}
-export const unfollowUserAC = (userId: number) => {
-    return {
-        type: 'UNFOLLOW-USER',
-        userId: userId
-    } as const
-}
-
-export const setUersAC = (users: UserType[]) => {
-    return {
-        type: 'SET-USERS',
-        users: users
-    } as const
-}
-
-export const setCurrentPageAC = (currentPage: number) => {
-    return {
-        type: 'SET-CURRENT-PAGE',
-        currentPage
-    } as const
-}
-export const setTotalUsersCountAC = (totalUsersCount: number) => {
-    return {
-        type: 'SET-TOTAL-USERS-COUNT',
-        totalUsersCount
-    } as const
-}
-
-export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC>
-
-export type DialogsActionTypes = ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC>
-
-export type UsersActionTypes = ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC> | ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC>
-
-
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
@@ -131,6 +60,8 @@ export type StoreType = {
     subscribe: (observer: (state: RootStateType) => void) => void
     dispatch: (action: any) => any
 }
+
+export type ActionTypes = ProfileActionTypes | DialogsActionTypes | UsersActionTypes
 
 
 const store: StoreType = {

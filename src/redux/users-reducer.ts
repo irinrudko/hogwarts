@@ -1,4 +1,4 @@
-import { UsersActionTypes, UsersPageType } from "./redux";
+import { UsersPageType, UserType } from "./redux";
 
 const initialState: UsersPageType = {
     users: [],
@@ -45,4 +45,37 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
             }
         default: return state
     }
+}
+
+export type UsersActionTypes = ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC> | ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC>
+
+export const followUserAC = (userId: number) => {
+    return {
+        type: 'FOLLOW-USER',
+        userId: userId
+    } as const
+}
+export const unfollowUserAC = (userId: number) => {
+    return {
+        type: 'UNFOLLOW-USER',
+        userId: userId
+    } as const
+}
+export const setUersAC = (users: UserType[]) => {
+    return {
+        type: 'SET-USERS',
+        users: users
+    } as const
+}
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: 'SET-CURRENT-PAGE',
+        currentPage
+    } as const
+}
+export const setTotalUsersCountAC = (totalUsersCount: number) => {
+    return {
+        type: 'SET-TOTAL-USERS-COUNT',
+        totalUsersCount
+    } as const
 }

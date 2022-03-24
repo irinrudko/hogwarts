@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ActionTypes, addPostAC, changePostTextAC } from '../../../redux/redux';
+import { addPostAC, changePostTextAC, ProfileActionTypes } from '../../../redux/profile-reducer';
 import { ReduxStateType } from '../../../redux/redux-store';
 import MyPosts from './MyPosts';
 
@@ -12,7 +12,7 @@ const mapStateToProps = (state: ReduxStateType) => {
     }
 }
 
-const mapDispatchToProps = (dispatch: (action: ActionTypes) => void) => {
+const mapDispatchToProps = (dispatch: (action: ProfileActionTypes) => void) => {
     return {
         addPost: (textPost: string) => {
             dispatch(addPostAC(textPost))

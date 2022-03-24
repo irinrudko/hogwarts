@@ -1,5 +1,5 @@
 import { v1 } from "uuid";
-import { PostType, ProfileActionTypes, ProfilePageType } from "./redux";
+import { PostType, ProfilePageType } from "./redux";
 const ADD_POST = 'ADD-POST'
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
 
@@ -38,4 +38,19 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
         default: return state
     }
 }
+
+export const addPostAC = (value: string) => {
+    return {
+        type: ADD_POST,
+        postText: value
+    } as const
+}
+export const changePostTextAC = (value: string) => {
+    return {
+        type: CHANGE_POST_TEXT,
+        newText: value
+    } as const
+}
+
+export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC>
 

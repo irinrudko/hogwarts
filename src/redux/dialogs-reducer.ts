@@ -1,5 +1,5 @@
 import { v1 } from "uuid";
-import { DialogPageType, DialogsActionTypes } from "./redux";
+import { DialogPageType } from "./redux";
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 const SEND_MESSAGE = 'SEND-MESSAGE'
@@ -41,5 +41,20 @@ export const dialogsReducer = (state: DialogPageType = initialState, action: Dia
 
         default: return state
     }
+}
+
+export type DialogsActionTypes = ReturnType<typeof sendMessageAC> | ReturnType<typeof updateMessageAC>
+
+export const sendMessageAC = (messageText: string) => {
+    return {
+        type: SEND_MESSAGE,
+        messageText: messageText
+    } as const
+}
+export const updateMessageAC = (messageBody: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY,
+        messageBody: messageBody
+    } as const
 }
 
