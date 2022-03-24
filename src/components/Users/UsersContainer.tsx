@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { UserType } from "../../redux/redux";
 import { ReduxStateType } from "../../redux/redux-store";
-import { followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, unfollowUserAC, UsersActionTypes } from "../../redux/users-reducer";
+import { followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes } from "../../redux/users-reducer";
 import UsersAPI from "./UsersAPI";
 
 const mapStateToProps = (state: ReduxStateType) => {
@@ -31,6 +31,9 @@ const mapDispatchToProps = (dispatch: (action: UsersActionTypes) => void) => {
         },
         setTotalUsersCount: (totalUsersCount: number) => {
             dispatch(setTotalUsersCountAC(totalUsersCount))
+        },
+        toggleIsFetchingAC: (isFetching: boolean) => {
+            dispatch(toggleIsFetchingAC(isFetching))
         }
     }
 }

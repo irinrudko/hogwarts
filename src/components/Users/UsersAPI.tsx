@@ -15,22 +15,33 @@ type UserAPIType = {
     setUsers: (users: UserType[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalUsersCount: number) => void
+    toggleIsFetchingAC: (isFetching: boolean) => void
     isFetching: boolean
 }
 
 class UsersAPI extends React.Component<UserAPIType> {
+
+    //TODO сделать норм пагинацию
     componentDidMount = () => {
+        this.props.toggleIsFetchingAC(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
+            this.props.toggleIsFetchingAC(false)
+
         })
+
     }
 
     getNewUsers = (pageNumber: number) => {
+        this.props.toggleIsFetchingAC(true)
+
         this.props.setCurrentPage(pageNumber)
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items)
+            this.props.toggleIsFetchingAC(false)
+
         })
     }
 
