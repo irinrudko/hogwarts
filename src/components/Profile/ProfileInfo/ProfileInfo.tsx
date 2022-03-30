@@ -1,18 +1,51 @@
 import React from 'react';
+import { Preloader } from '../../common/Preloader/Preloader';
+import { UserProfileType } from '../ProfileContainer';
 import style from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+type ProfileInfoType = {
+    profile: UserProfileType
+}
+
+//@ts-ignore
+const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
+
+
+    let contacts = Object.entries(props.profile.contacts || {}).map(([key, value]) => {
+        return (
+            <>
+                <div className={style.contacts}>
+                    <div className={style.keys}>{`${key}`}</div>
+                    <div>{`${value}`}</div>
+                </div>
+            </>
+        )
+    });
+
+    if (!props.profile) {
+        return <Preloader />
+    }
+
+
     return (
         <>
             <div>
-                <img src='https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80' />
+                <img src={props.profile.photos.small} />
+            </div>
+
+            <div>
+                <h2>{props.profile.fullName}</h2>
             </div>
 
             <div className={style.description}>
-                ava + descr
+                <div>{props.profile.aboutMe}</div>
+                <div>{props.profile.lookingForAJobDescription}</div>
+
+                <div>{contacts}</div>
             </div>
         </>
     )
+
 }
 
 export default ProfileInfo;

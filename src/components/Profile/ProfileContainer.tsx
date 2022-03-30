@@ -1,28 +1,63 @@
 import React from 'react';
-import { ActionTypes } from '../../redux/redux';
-import { Store } from 'redux';
 import { ReduxStateType } from '../../redux/redux-store';
 import Profile from './Profile';
+import { connect } from 'react-redux';
+import { ProfileActionTypes, setProfilePageAC } from '../../redux/profile-reducer';
+import axios from 'axios';
 
-type PostItem = {
-    id: string
-    message: string
-    likesCount: number
+
+const mapStateToProps = (state: ReduxStateType) => {
+    return {
+        profile: state.profilePage.profile
+    }
+}
+const mapDispatchToProps = (dispatch: (action: ProfileActionTypes) => void) => {
+    return {
+        setProfilePage: (profile: any) => {
+            dispatch(setProfilePageAC(profile))
+        }
+    }
 }
 
-type PostsData = {
-    posts: Array<PostItem>
-    textPost: string
-    dispatch: (action: ActionTypes) => void
-    store: Store<ReduxStateType, ActionTypes>
-
+export type UserProfileType = {
+    "aboutMe": string
+    "contacts": {
+        "facebook": string
+        "website": null,
+        "vk": string
+        "twitter": string
+        "instagram": string
+        "youtube": null,
+        "github": string
+        "mainLink": null
+    },
+    "lookingForAJob": boolean,
+    "lookingForAJobDescription": string
+    "fullName": string
+    "userId": number
+    "photos": {
+        "small": any
+        "large": any
+    }
 }
 
-class ProfileContainer extends React.Component<PostsData> {
+type ProfileContainerPropsType = {
+    setProfilePage: (profile: any) => void
+    profile: UserProfileType
+}
+
+
+class ProfileContainer extends React.Component<ProfileContainerPropsType> {
+    componentDidMount = () => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+            this.props.setProfilePage(response.data)
+        })
+    }
+
     render = () => {
-        return <Profile {...this.props} />
+        return <Profile {...this.props} profile={this.props.profile} />
     }
 }
 
 
-export default ProfileContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

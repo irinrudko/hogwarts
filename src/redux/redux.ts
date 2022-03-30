@@ -31,20 +31,19 @@ export type UserType = {
 export type ProfilePageType = {
     postText: string
     postsData: Array<PostType>
+    profile: any
 }
 export type DialogPageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
     messageText: string
 }
-
 export type UsersPageType = {
     users: Array<UserType>
     totalUsersCount: number
     pageSize: number
     currentPage: number
     isFetching: boolean
-
 }
 
 export type RootStateType = {
@@ -74,6 +73,7 @@ const store: StoreType = {
                 { id: v1(), message: "Hey, it's my second post here", likesCount: 2 },
                 { id: v1(), message: "This is a mapped post", likesCount: 1000 },
             ],
+            profile: {}
 
         },
         dialogsPage: {
@@ -120,7 +120,6 @@ const store: StoreType = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        // this._state.profilePage = profileReducer(this._state.profilePage, action)
 
         this._callSubscriber(this._state)
     }

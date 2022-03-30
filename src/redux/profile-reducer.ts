@@ -12,6 +12,7 @@ const initialState: ProfilePageType = {
         { id: v1(), message: "Hey, it's my second post here", likesCount: 2 },
         { id: v1(), message: "This is a mapped post", likesCount: 1000 },
     ],
+    profile: {}
 };
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionTypes): ProfilePageType => {
@@ -27,14 +28,16 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
                 postsData: [...state.postsData, newPost],
                 postText: ''
             }
-
         case CHANGE_POST_TEXT: {
             return {
                 ...state,
                 postText: action.newText
             }
         }
-
+        case 'SET-PROFILE-PAGE':
+            return {
+                ...state, profile: action.profile
+            }
         default: return state
     }
 }
@@ -51,6 +54,12 @@ export const changePostTextAC = (value: string) => {
         newText: value
     } as const
 }
+export const setProfilePageAC = (profile: Object) => {
+    return {
+        type: 'SET-PROFILE-PAGE',
+        profile
+    } as const
+}
 
-export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC>
+export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof setProfilePageAC>
 

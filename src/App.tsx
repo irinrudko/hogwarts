@@ -30,8 +30,7 @@ const App = (props: AppType) => {
             <Header />
             <NavBar />
             <main className='app-wrapper-content'>
-              <Route path='/profile' render={() => <ProfileContainer
-                posts={state.profilePage.postsData} dispatch={props.dispatch} textPost={state.profilePage.postText} store={props.store} />} />
+              <Route path='/profile' render={() => <ProfileContainer />} />
               <Route path='/dialogs' render={() => <DialogsContainer />} />
               <Route path='/friends' render={() => <Friends />} />
               <Route path='/users' render={() => <UsersContainer />} />

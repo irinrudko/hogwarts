@@ -2,6 +2,7 @@ import React from 'react';
 import { UserType } from '../../redux/redux';
 import style from '../Users/Users.module.css'
 import userPhoto from '../../assets/icons/avatar-male.png'
+import { NavLink } from 'react-router-dom';
 
 
 type UserPropsType = {
@@ -23,7 +24,9 @@ export const Users: React.FC<UserPropsType> = (props) => {
 
                 return <div key={u.id}>
                     <div>
-                        <img src={u.photos.small !== null ? u.photos.small : userPhoto} alt="avatar" width={"70px"} />
+                        <NavLink to="/profile" >
+                            <img src={u.photos.small !== null ? u.photos.small : userPhoto} alt="avatar" width={"70px"} />
+                        </NavLink>
                         <h2>{u.name}</h2>
                         <span>{u.status}</span>
                         <div>
