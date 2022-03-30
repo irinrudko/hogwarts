@@ -4,21 +4,21 @@ import Profile from './Profile';
 import { connect } from 'react-redux';
 import { ProfileActionTypes, setProfilePageAC } from '../../redux/profile-reducer';
 import axios from 'axios';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 
-const mapStateToProps = (state: ReduxStateType) => {
+const mapStateToProps = (state: ReduxStateType): MapStateToPropsProfileType => {
     return {
         profile: state.profilePage.profile
     }
 }
-const mapDispatchToProps = (dispatch: (action: ProfileActionTypes) => void) => {
+const mapDispatchToProps = (dispatch: (action: ProfileActionTypes) => void): MapDispatchToPropsProfileType => {
     return {
         setProfilePage: (profile: Object) => {
             dispatch(setProfilePageAC(profile))
         }
     }
 }
-
 
 export type UserProfileType = {
     "userId": number
@@ -42,23 +42,35 @@ export type UserProfileType = {
     }
 }
 
-type ProfileContainerPropsType = {
-    setProfilePage: (profile: Object) => void
+type MapStateToPropsProfileType = {
     profile: UserProfileType
 }
+type MapDispatchToPropsProfileType = {
+    setProfilePage: (profile: Object) => void
+}
+type MatchParamsType = {
+    userId?: string
+}
+type OwnProps = MapStateToPropsProfileType & MapDispatchToPropsProfileType;
+type ProfileContainerPropsType = RouteComponentProps<MatchParamsType> & OwnProps;
+
+
 
 
 class ProfileContainer extends React.Component<ProfileContainerPropsType> {
     componentDidMount = () => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+        let userId = this.props.match.params.userId;
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
             this.props.setProfilePage(response.data)
         })
     }
 
     render = () => {
+
         return <Profile {...this.props} profile={this.props.profile} />
     }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+const UrlDataContainer = withRouter(ProfileContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(UrlDataContainer);

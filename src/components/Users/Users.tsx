@@ -24,7 +24,7 @@ export const Users: React.FC<UserPropsType> = (props) => {
 
                 return <div key={u.id}>
                     <div>
-                        <NavLink to="/profile" >
+                        <NavLink to={'/profile/' + u.id} >
                             <img src={u.photos.small !== null ? u.photos.small : userPhoto} alt="avatar" width={"70px"} />
                         </NavLink>
                         <h2>{u.name}</h2>
