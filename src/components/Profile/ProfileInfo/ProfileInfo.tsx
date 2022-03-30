@@ -9,6 +9,9 @@ type ProfileInfoType = {
 
 //@ts-ignore
 const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
+    if (!props.profile) {
+        return <Preloader />
+    }
 
 
     let contacts = Object.entries(props.profile.contacts || {}).map(([key, value]) => {
@@ -22,17 +25,13 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
         )
     });
 
-    if (!props.profile) {
-        return <Preloader />
-    }
 
 
     return (
         <>
             <div>
-                <img src={props.profile.photos.small} />
+                <img src={props.profile.photos.large} />
             </div>
-
             <div>
                 <h2>{props.profile.fullName}</h2>
             </div>
@@ -43,6 +42,8 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
 
                 <div>{contacts}</div>
             </div>
+
+
         </>
     )
 

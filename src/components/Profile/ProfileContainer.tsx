@@ -19,26 +19,29 @@ const mapDispatchToProps = (dispatch: (action: ProfileActionTypes) => void) => {
     }
 }
 
+type UserPhotoType = {
+    "small": string
+    "large": string
+
+}
+
 export type UserProfileType = {
+    "userId": number
     "aboutMe": string
     "contacts": {
         "facebook": string
-        "website": null,
+        "website": string
         "vk": string
         "twitter": string
         "instagram": string
-        "youtube": null,
+        "youtube": string
         "github": string
-        "mainLink": null
+        "mainLink": string
     },
-    "lookingForAJob": boolean,
+    "lookingForAJob": boolean
     "lookingForAJobDescription": string
     "fullName": string
-    "userId": number
-    "photos": {
-        "small": any
-        "large": any
-    }
+    "photos": UserPhotoType
 }
 
 type ProfileContainerPropsType = {
