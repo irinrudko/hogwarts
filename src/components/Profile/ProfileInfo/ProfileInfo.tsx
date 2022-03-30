@@ -43,8 +43,6 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
 
                 <div>{contacts}</div>
             </div>
-
-
         </>
     )
 
