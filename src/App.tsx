@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import Profile from './components/Profile/Profile';
 import NavBar from './components/Navbar/Navbar';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -11,6 +10,7 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import UsersContainer from './components/Users/UsersContainer';
 import { ActionTypes } from './redux/redux';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 
 type AppType = {
@@ -30,7 +30,7 @@ const App = (props: AppType) => {
             <Header />
             <NavBar />
             <main className='app-wrapper-content'>
-              <Route path='/profile' render={() => <Profile
+              <Route path='/profile' render={() => <ProfileContainer
                 posts={state.profilePage.postsData} dispatch={props.dispatch} textPost={state.profilePage.postText} store={props.store} />} />
               <Route path='/dialogs' render={() => <DialogsContainer />} />
               <Route path='/friends' render={() => <Friends />} />

@@ -1,10 +1,8 @@
 import React from 'react';
-import style from './Profile.module.css';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
 import { ActionTypes } from '../../redux/redux';
-import MyPostsContainer from './MyPosts/MyPostsContainter';
 import { Store } from 'redux';
 import { ReduxStateType } from '../../redux/redux-store';
+import Profile from './Profile';
 
 type PostItem = {
     id: string
@@ -17,16 +15,14 @@ type PostsData = {
     textPost: string
     dispatch: (action: ActionTypes) => void
     store: Store<ReduxStateType, ActionTypes>
+
+}
+
+class ProfileContainer extends React.Component<PostsData> {
+    render = () => {
+        return <Profile {...this.props} />
+    }
 }
 
 
-const Profile: React.FC<PostsData> = () => {
-    return (
-        <main className={style.profile}>
-            <ProfileInfo />
-            <MyPostsContainer />
-        </main>
-    )
-}
-
-export default Profile;
+export default ProfileContainer;
