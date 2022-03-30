@@ -9,7 +9,8 @@ type ProfileInfoType = {
 
 //@ts-ignore
 const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
-    if (!props.profile) {
+    if (!props.profile.photos) {
+        //необходимая проверка. иначе выдаёт undefined
         return <Preloader />
     }
 
