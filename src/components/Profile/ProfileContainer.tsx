@@ -13,7 +13,7 @@ const mapStateToProps = (state: ReduxStateType) => {
 }
 const mapDispatchToProps = (dispatch: (action: ProfileActionTypes) => void) => {
     return {
-        setProfilePage: (profile: any) => {
+        setProfilePage: (profile: Object) => {
             dispatch(setProfilePageAC(profile))
         }
     }
@@ -43,7 +43,7 @@ export type UserProfileType = {
 }
 
 type ProfileContainerPropsType = {
-    setProfilePage: (profile: any) => void
+    setProfilePage: (profile: Object) => void
     profile: UserProfileType
 }
 
