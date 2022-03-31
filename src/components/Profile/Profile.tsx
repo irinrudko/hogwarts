@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainter';
-import { UserProfileType } from './ProfileContainer';
+import { UserProfileType } from '../../redux/redux';
 
 
 

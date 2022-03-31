@@ -1,13 +1,12 @@
 import React from 'react';
+import { UserProfileType } from '../../../redux/redux';
 import { Preloader } from '../../common/Preloader/Preloader';
-import { UserProfileType } from '../ProfileContainer';
 import style from './ProfileInfo.module.css';
 
 type ProfileInfoType = {
     profile: UserProfileType
 }
 
-//@ts-ignore
 const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
     if (!props.profile.photos) {
         //необходимая проверка. иначе выдаёт undefined

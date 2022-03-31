@@ -2,11 +2,29 @@
   grid-area: header;
   background-color: #2D5BAA;
   max-height: 64px;
+  padding: 0 10px;
 }
 
 .header img {
   width: 30px;
   height: 30px;
+}
+
+.loginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .ico {

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { ProfileActionTypes, setProfilePageAC } from '../../redux/profile-reducer';
 import axios from 'axios';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { UserProfileType } from '../../redux/redux';
 
 
 const mapStateToProps = (state: ReduxStateType): MapStateToPropsProfileType => {
@@ -14,31 +15,9 @@ const mapStateToProps = (state: ReduxStateType): MapStateToPropsProfileType => {
 }
 const mapDispatchToProps = (dispatch: (action: ProfileActionTypes) => void): MapDispatchToPropsProfileType => {
     return {
-        setProfilePage: (profile: Object) => {
+        setProfilePage: (profile: UserProfileType) => {
             dispatch(setProfilePageAC(profile))
         }
-    }
-}
-
-export type UserProfileType = {
-    "userId": number
-    "aboutMe": string
-    "contacts": {
-        "facebook": string
-        "website": string
-        "vk": string
-        "twitter": string
-        "instagram": string
-        "youtube": string
-        "github": string
-        "mainLink": string
-    },
-    "lookingForAJob": boolean
-    "lookingForAJobDescription": string
-    "fullName": string
-    "photos": {
-        "small": string
-        "large": string
     }
 }
 
@@ -46,7 +25,7 @@ type MapStateToPropsProfileType = {
     profile: UserProfileType
 }
 type MapDispatchToPropsProfileType = {
-    setProfilePage: (profile: Object) => void
+    setProfilePage: (profile: UserProfileType) => void
 }
 type MatchParamsType = {
     userId?: string

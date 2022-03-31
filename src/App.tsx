@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
 import NavBar from './components/Navbar/Navbar';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -11,6 +10,7 @@ import { Provider } from 'react-redux';
 import UsersContainer from './components/Users/UsersContainer';
 import { ActionTypes } from './redux/redux';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 
 type AppType = {
@@ -27,7 +27,7 @@ const App = (props: AppType) => {
       <Provider store={store}>
         <div className="site-wrapper">
           <div className='app-wrapper'>
-            <Header />
+            <HeaderContainer />
             <NavBar />
             <main className='app-wrapper-content'>
               <Route path='/profile/:userId' render={() => <ProfileContainer />} />

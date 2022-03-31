@@ -1,12 +1,14 @@
 import { v1 } from "uuid"
+import { AuthActionTypes } from "./auth-reducer"
 import { DialogsActionTypes, dialogsReducer } from "./dialogs-reducer"
 import { ProfileActionTypes, profileReducer } from "./profile-reducer"
 import { UsersActionTypes } from "./users-reducer"
 
-export type PostType = {
-    id: string
-    message: string
-    likesCount: number
+
+export type DialogPageType = {
+    dialogsData: Array<DialogType>
+    messagesData: Array<MessageType>
+    messageText: string
 }
 type DialogType = {
     id: string
@@ -16,28 +18,8 @@ type MessageType = {
     id: string
     message: string
 }
-type UserPhotoType = {
-    small: string
-    large: string
-}
 
-export type UserType = {
-    name: string
-    id: number
-    photos: UserPhotoType
-    status: string
-    followed: boolean
-}
-export type ProfilePageType = {
-    postText: string
-    postsData: Array<PostType>
-    profile: any
-}
-export type DialogPageType = {
-    dialogsData: Array<DialogType>
-    messagesData: Array<MessageType>
-    messageText: string
-}
+
 export type UsersPageType = {
     users: Array<UserType>
     totalUsersCount: number
@@ -45,6 +27,65 @@ export type UsersPageType = {
     currentPage: number
     isFetching: boolean
 }
+export type UserType = {
+    name: string
+    id: number
+    photos: UserPhotoType
+    status: string
+    followed: boolean
+}
+type UserPhotoType = {
+    small: string
+    large: string
+}
+
+export type ProfilePageType = {
+    postText: string
+    postsData: Array<PostType>
+    profile: UserProfileType
+}
+export type UserProfileType = {
+    userId: number
+    aboutMe: string
+    contacts: {
+        facebook: string
+        website: string
+        vk: string
+        twitter: string
+        instagram: string
+        youtube: string
+        github: string
+        mainLink: string
+    },
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    photos: {
+        small: string
+        large: string
+    }
+}
+export type PostType = {
+    id: string
+    message: string
+    likesCount: number
+}
+
+
+
+
+export type AuthUserType = {
+    messages: []
+    data: UserDataType
+    isAuth: boolean
+}
+export type UserDataType = {
+    id: number
+    email: string
+    login: string
+}
+
+
 
 export type RootStateType = {
     profilePage: ProfilePageType
@@ -60,8 +101,7 @@ export type StoreType = {
     dispatch: (action: any) => any
 }
 
-export type ActionTypes = ProfileActionTypes | DialogsActionTypes | UsersActionTypes
-
+export type ActionTypes = ProfileActionTypes | DialogsActionTypes | UsersActionTypes | AuthActionTypes
 
 const store: StoreType = {
     _state: {
@@ -73,6 +113,7 @@ const store: StoreType = {
                 { id: v1(), message: "Hey, it's my second post here", likesCount: 2 },
                 { id: v1(), message: "This is a mapped post", likesCount: 1000 },
             ],
+            //@ts-ignore
             profile: {}
 
         },
