@@ -4,6 +4,7 @@ import { UserType } from "../../redux/redux";
 import style from '../Users/Users.module.css'
 import { Users } from './Users';
 import { Preloader } from "../common/Preloader/Preloader";
+import { usersAPI } from "../../redux/API/api";
 
 type UserAPIType = {
     users: Array<UserType>
@@ -22,26 +23,24 @@ type UserAPIType = {
 class UsersAPI extends React.Component<UserAPIType> {
 
     //TODO сделать норм пагинацию
-    componentDidMount = () => {
-        this.props.toggleIsFetchingAC(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-            withCredentials: true
-        }).then(response => {
-            this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
-            this.props.toggleIsFetchingAC(false)
-        })
-    }
+    private _componentDidMount = () => {
+        this.props.toggleIsFetchingAC(true);
+
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
+            this.props.toggleIsFetchingAC(false);
+        });
+    };
+
 
     getNewUsers = (pageNumber: number) => {
         this.props.toggleIsFetchingAC(true)
-
         this.props.setCurrentPage(pageNumber)
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-            withCredentials: true
-        }).then(response => {
-            this.props.setUsers(response.data.items)
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+            debugger
+            this.props.setUsers(data.items)
             this.props.toggleIsFetchingAC(false)
         })
     }
