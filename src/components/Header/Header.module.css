@@ -14,12 +14,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+
+  text-decoration: none;
+
 }
 
 .login {
-  color: white;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .container {
