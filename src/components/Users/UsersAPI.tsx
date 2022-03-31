@@ -24,7 +24,9 @@ class UsersAPI extends React.Component<UserAPIType> {
     //TODO сделать норм пагинацию
     componentDidMount = () => {
         this.props.toggleIsFetchingAC(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+            withCredentials: true
+        }).then(response => {
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
             this.props.toggleIsFetchingAC(false)
@@ -36,10 +38,11 @@ class UsersAPI extends React.Component<UserAPIType> {
 
         this.props.setCurrentPage(pageNumber)
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+            withCredentials: true
+        }).then(response => {
             this.props.setUsers(response.data.items)
             this.props.toggleIsFetchingAC(false)
-
         })
     }
 

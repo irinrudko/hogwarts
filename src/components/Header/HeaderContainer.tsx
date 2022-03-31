@@ -39,11 +39,9 @@ class HeaderContainer extends React.Component<OwnHeaderPropsType> {
     componentDidMount = () => {
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true,
-            // headers: { 'API-KEY': '60dbbaa9-e2dc-4b9e-b230-07adf0b70edf' }
+            withCredentials: true
         })
             .then(response => {
-                debugger
                 if (response.data.resultCode === 0) {
                     let { id, email, login } = response.data.data
                     this.props.setUserData({ id, email, login })
