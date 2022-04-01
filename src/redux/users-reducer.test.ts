@@ -12,7 +12,8 @@ it('should follow the correct user', () => {
         totalUsersCount: 20,
         pageSize: 5,
         currentPage: 2,
-        isFetching: false
+        isFetching: false,
+        isFollowingInProgress: []
     }
 
     const endState = usersReducer(startState, { type: 'FOLLOW-USER', userId })
@@ -37,7 +38,8 @@ it('should unfollow the correct user', () => {
         totalUsersCount: 20,
         pageSize: 5,
         currentPage: 2,
-        isFetching: false
+        isFetching: false,
+        isFollowingInProgress: []
     }
 
     const endState = usersReducer(startState, { type: 'UNFOLLOW-USER', userId: _id })
