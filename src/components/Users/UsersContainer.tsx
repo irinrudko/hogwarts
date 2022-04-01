@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { ReduxStateType } from "../../redux/redux-store";
-import { followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes, UserType } from "../../redux/users-reducer";
+import { followUserAC, getUsersTH, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes, UserType } from "../../redux/users-reducer";
 import UsersAPI from "./UsersAPI";
 
 const mapStateToProps = (state: ReduxStateType) => {
@@ -15,7 +15,7 @@ const mapStateToProps = (state: ReduxStateType) => {
     }
 }
 
-const mapDispatchToProps = (dispatch: (action: UsersActionTypes) => void) => {
+const mapDispatchToProps = (dispatch: (action: UsersActionTypes | any) => void) => {
     return {
         followUser: (userId: number) => {
             dispatch(followUserAC(userId))
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch: (action: UsersActionTypes) => void) => {
             dispatch(unfollowUserAC(userId))
         },
         setUsers: (users: UserType[]) => {
-            dispatch(setUersAC(users))
+            dispatch(setUsersAC(users))
         },
         setCurrentPage: (currentPage: number) => {
             dispatch(setCurrentPageAC(currentPage))
@@ -37,6 +37,9 @@ const mapDispatchToProps = (dispatch: (action: UsersActionTypes) => void) => {
         },
         toggleFollowingProgress: (userId: number, isFollowingInProgress: boolean) => {
             dispatch(toggleFollowingProgressAC(userId, isFollowingInProgress))
+        },
+        getUsers: (currentPage: number, pageSize: number) => {
+            dispatch(getUsersTH(currentPage, pageSize))
         }
     }
 }

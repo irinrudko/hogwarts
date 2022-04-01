@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import style from '../Users/Users.module.css'
 import { Users } from './Users';
@@ -20,19 +19,14 @@ type UserAPIType = {
     toggleFollowingProgress: (userId: number, isFollowingInProgress: boolean) => void
     isFollowingInProgress: Array<number>
     isFetching: boolean
+    getUsers: (currentPage: number, pageSize: number) => void
 }
 
 class UsersAPI extends React.Component<UserAPIType> {
 
     //TODO сделать норм пагинацию
-    private _componentDidMount = () => {
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items);
-            this.props.setTotalUsersCount(data.totalCount);
-            this.props.toggleIsFetching(false);
-        });
+    componentDidMount = () => {
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     };
 
 

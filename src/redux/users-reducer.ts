@@ -1,3 +1,4 @@
+import { usersAPI } from "./API/api";
 
 const initialState: UsersPageType = {
     users: [],
@@ -56,7 +57,7 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
     }
 }
 
-export type UsersActionTypes = ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUersAC> | ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC> | ReturnType<typeof toggleIsFetchingAC> | ReturnType<typeof toggleFollowingProgressAC>
+export type UsersActionTypes = ReturnType<typeof followUserAC> | ReturnType<typeof unfollowUserAC> | ReturnType<typeof setUsersAC> | ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC> | ReturnType<typeof toggleIsFetchingAC> | ReturnType<typeof toggleFollowingProgressAC>
 
 export const followUserAC = (userId: number) => {
     return {
@@ -70,7 +71,7 @@ export const unfollowUserAC = (userId: number) => {
         userId: userId
     } as const
 }
-export const setUersAC = (users: UserType[]) => {
+export const setUsersAC = (users: UserType[]) => {
     return {
         type: 'SET-USERS',
         users: users
@@ -100,6 +101,19 @@ export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress:
         userId,
         isFollowingInProgress
     } as const
+}
+
+
+export const getUsersTH = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {
+        dispatch(toggleIsFetchingAC(true));
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(setUsersAC(data.items));
+            dispatch(setTotalUsersCountAC(data.totalCount));
+            dispatch(toggleIsFetchingAC(false));
+        });
+    }
 }
 
 export type UsersPageType = {
