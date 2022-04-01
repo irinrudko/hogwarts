@@ -12,6 +12,8 @@ type UserPropsType = {
     users: Array<UserType>
     followUser: (userId: number) => void
     unfollowUser: (userId: number) => void
+    toggleFollowingProgress: (isFollowingInProgress: boolean) => void
+    isFollowingInProgress: boolean
 }
 
 
@@ -34,21 +36,25 @@ export class Users extends React.Component<UserPropsType> {
                             <span>{u.status}</span>
                             <div>
                                 {u.followed
-                                    ? <button onClick={() => {
-
-                                        usersAPI.unfollowUser(u.id).then(response => {
-                                            if (response.data.resultCode === 0) {
+                                    ? <button disabled={this.props.isFollowingInProgress} onClick={() => {
+                                        // this.props.toggleFollowingProgress(true)
+                                        usersAPI.unfollowUser(u.id).then(data => {
+                                            if (data.resultCode === 0) {
                                                 this.props.unfollowUser(u.id)
+                                                // this.props.toggleFollowingProgress(false)
                                             }
                                         })
                                     }
 
                                     }>Unfollow</button>
-                                    : <button onClick={() => {
+                                    : <button disabled={this.props.isFollowingInProgress} onClick={() => {
+                                        // this.props.toggleFollowingProgress(true)
 
                                         usersAPI.followUser(u.id).then(data => {
                                             if (data.resultCode === 0) {
                                                 this.props.followUser(u.id)
+                                                // this.props.toggleFollowingProgress(false)
+
                                             }
                                         })
                                     }
