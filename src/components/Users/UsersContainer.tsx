@@ -38,9 +38,9 @@ const mapDispatchToProps = (dispatch: (action: UsersActionTypes | any) => void) 
         toggleFollowingProgress: (userId: number, isFollowingInProgress: boolean) => {
             dispatch(toggleFollowingProgressAC(userId, isFollowingInProgress))
         },
-        getUsers: (currentPage: number, pageSize: number) => {
-            dispatch(getUsersTH(currentPage, pageSize))
-        }
+        getUsers: (pageNumber: number, pageSize: number) => {
+            dispatch(getUsersTH(pageNumber, pageSize))
+        },
     }
 }
 

@@ -104,15 +104,17 @@ export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress:
 }
 
 
-export const getUsersTH = (currentPage: number, pageSize: number) => {
-    return (dispatch: any) => {
-        dispatch(toggleIsFetchingAC(true));
 
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(setUsersAC(data.items));
-            dispatch(setTotalUsersCountAC(data.totalCount));
-            dispatch(toggleIsFetchingAC(false));
-        });
+export const getUsersTH = (pageNumber: number, pageSize: number) => {
+    return (dispatch: any) => {
+
+        dispatch(toggleIsFetchingAC(true))
+        dispatch(setCurrentPageAC(pageNumber)) //можно ли здесь не дублировать код
+
+        usersAPI.getUsers(pageNumber, pageSize).then(data => {
+            dispatch(setUsersAC(data.items))
+            dispatch(toggleIsFetchingAC(false))
+        })
     }
 }
 

@@ -19,7 +19,7 @@ type UserAPIType = {
     toggleFollowingProgress: (userId: number, isFollowingInProgress: boolean) => void
     isFollowingInProgress: Array<number>
     isFetching: boolean
-    getUsers: (currentPage: number, pageSize: number) => void
+    getUsers: (pageNumber: number, pageSize: number) => void
 }
 
 class UsersAPI extends React.Component<UserAPIType> {
@@ -31,13 +31,7 @@ class UsersAPI extends React.Component<UserAPIType> {
 
 
     getNewUsers = (pageNumber: number) => {
-        this.props.toggleIsFetching(true)
-        this.props.setCurrentPage(pageNumber)
-
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items)
-            this.props.toggleIsFetching(false)
-        })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render = () => {
