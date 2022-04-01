@@ -34,24 +34,11 @@ export class Users extends React.Component<UserPropsType> {
                             <span>{u.status}</span>
                             <div>
                                 {u.followed
-<<<<<<< HEAD
                                     ? <button disabled={this.props.isFollowingInProgress.some(id => id === u.id)} onClick={
                                         () => this.props.unfollowUser(u.id)}>Unfollow</button>
 
                                     : <button disabled={this.props.isFollowingInProgress.some(id => id === u.id)} onClick={
                                         () => this.props.followUser(u.id)}>Follow</button>}
-=======
-                                    ? <button disabled={this.props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {
-                                        this.props.unfollowUser(u.id)
-                                    }
-
-                                    }>Unfollow</button>
-                                    : <button disabled={this.props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {
-
-                                        this.props.followUser(u.id)
-                                    }
-                                    }>Follow</button>}
->>>>>>> a4e5e62754b3426789dc9ba587732b928f575589
                             </div>
                         </div>
                     </div>
