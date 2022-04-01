@@ -2,7 +2,6 @@ import React from "react";
 import style from '../Users/Users.module.css'
 import { Users } from './Users';
 import { Preloader } from "../common/Preloader/Preloader";
-import { usersAPI } from "../../redux/API/api";
 import { UserType } from "../../redux/users-reducer";
 
 type UserAPIType = {
@@ -28,7 +27,6 @@ class UsersAPI extends React.Component<UserAPIType> {
     componentDidMount = () => {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
     };
-
 
     getNewUsers = (pageNumber: number) => {
         this.props.getUsers(pageNumber, this.props.pageSize)

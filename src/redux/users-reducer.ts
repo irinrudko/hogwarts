@@ -105,7 +105,8 @@ export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress:
 }
 
 
-
+/////
+//Thunks
 export const getUsersTH = (pageNumber: number, pageSize: number): AppThunk => {
     return (dispatch) => {
         dispatch(toggleIsFetchingAC(true))
@@ -117,6 +118,34 @@ export const getUsersTH = (pageNumber: number, pageSize: number): AppThunk => {
         })
     }
 }
+export const followUser = (userId: number): AppThunk => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgressAC(userId, true))
+
+        usersAPI.followUser(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(followUserAC(userId))
+            }
+            dispatch(toggleFollowingProgressAC(userId, false))
+        })
+    }
+}
+export const unfollowUser = (userId: number): AppThunk => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgressAC(userId, true))
+
+        usersAPI.unfollowUser(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowUserAC(userId))
+            }
+            dispatch(toggleFollowingProgressAC(userId, false))
+        })
+    }
+}
+
+//Thunks
+/////
+
 
 
 
