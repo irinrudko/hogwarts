@@ -1,5 +1,4 @@
-import { UsersPageType } from "./redux"
-import { usersReducer } from "./users-reducer"
+import { UsersPageType, usersReducer } from "./users-reducer"
 
 it('should follow the correct user', () => {
     let userId = 3;

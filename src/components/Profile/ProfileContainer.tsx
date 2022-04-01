@@ -1,11 +1,10 @@
 import React from 'react';
-import { ReduxStateType } from '../../redux/redux-store';
-import Profile from './Profile';
-import { connect } from 'react-redux';
-import { ProfileActionTypes, setProfilePageAC } from '../../redux/profile-reducer';
 import axios from 'axios';
+import Profile from './Profile';
+import { ProfileActionTypes, setProfilePageAC, UserProfileType } from '../../redux/profile-reducer';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { UserProfileType } from '../../redux/redux';
+import { connect } from 'react-redux';
+import { ReduxStateType } from '../../redux/redux-store';
 
 
 const mapStateToProps = (state: ReduxStateType): MapStateToPropsProfileType => {

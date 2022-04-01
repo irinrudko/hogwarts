@@ -1,4 +1,3 @@
-import { UsersPageType, UserType } from "./redux";
 
 const initialState: UsersPageType = {
     users: [],
@@ -101,4 +100,24 @@ export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress:
         userId,
         isFollowingInProgress
     } as const
+}
+
+export type UsersPageType = {
+    users: Array<UserType>
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    isFetching: boolean
+    isFollowingInProgress: Array<number>
+}
+export type UserType = {
+    name: string
+    id: number
+    photos: UserPhotoType
+    status: string
+    followed: boolean
+}
+type UserPhotoType = {
+    small: string
+    large: string
 }

@@ -1,5 +1,3 @@
-import { act } from "react-dom/test-utils"
-import { UserDataType, AuthUserType } from "./redux"
 
 const initialState: AuthUserType = {
     messages: [],
@@ -34,3 +32,15 @@ export const setUserDataAC = (id: number, email: string, login: string) => {
 }
 
 
+
+
+export type AuthUserType = {
+    messages: []
+    data: UserDataType
+    isAuth: boolean
+}
+export type UserDataType = {
+    id: number
+    email: string
+    login: string
+}

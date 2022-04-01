@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { AuthActionTypes, setUserDataAC } from '../../redux/auth-reducer';
-import { UserDataType, AuthUserType } from '../../redux/redux';
+import { AuthActionTypes, setUserDataAC, UserDataType } from '../../redux/auth-reducer';
 import { ReduxStateType } from '../../redux/redux-store';
 import Header from './Header';
 

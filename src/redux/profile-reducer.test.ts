@@ -1,6 +1,5 @@
 import { v1 } from "uuid";
-import { profileReducer } from "./profile-reducer";
-import { PostType, ProfilePageType } from "./redux";
+import { profileReducer, ProfilePageType } from "./profile-reducer";
 
 test('correct post text should be added', () => {
     let newPostMessage = 'new mes';

@@ -3,12 +3,11 @@ import './App.css';
 import NavBar from './components/Navbar/Navbar';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Route } from 'react-router-dom';
-import store, { ReduxStateType } from './redux/redux-store';
+import store, { ActionTypes, ReduxStateType } from './redux/redux-store';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import UsersContainer from './components/Users/UsersContainer';
-import { ActionTypes } from './redux/redux';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 

@@ -1,10 +1,10 @@
 import axios from "axios";
 import React from "react";
-import { UserType } from "../../redux/redux";
 import style from '../Users/Users.module.css'
 import { Users } from './Users';
 import { Preloader } from "../common/Preloader/Preloader";
 import { usersAPI } from "../../redux/API/api";
+import { UserType } from "../../redux/users-reducer";
 
 type UserAPIType = {
     users: Array<UserType>

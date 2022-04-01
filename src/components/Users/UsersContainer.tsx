@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { UserType } from "../../redux/redux";
 import { ReduxStateType } from "../../redux/redux-store";
-import { followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes } from "../../redux/users-reducer";
+import { followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes, UserType } from "../../redux/users-reducer";
 import UsersAPI from "./UsersAPI";
 
 const mapStateToProps = (state: ReduxStateType) => {

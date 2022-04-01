@@ -1,6 +1,5 @@
 import { v1 } from "uuid"
-import { dialogsReducer } from "./dialogs-reducer"
-import { DialogPageType } from "./redux"
+import { dialogsReducer, DialogPageType } from "./dialogs-reducer"
 
 test('correct message should be sent', () => {
     const startState: DialogPageType = {

@@ -1,96 +1,11 @@
 import { v1 } from "uuid"
-import { AuthActionTypes } from "./auth-reducer"
-import { DialogsActionTypes, dialogsReducer } from "./dialogs-reducer"
-import { ProfileActionTypes, profileReducer } from "./profile-reducer"
-import { UsersActionTypes } from "./users-reducer"
-
-
-export type DialogPageType = {
-    dialogsData: Array<DialogType>
-    messagesData: Array<MessageType>
-    messageText: string
-}
-type DialogType = {
-    id: string
-    name: string
-}
-type MessageType = {
-    id: string
-    message: string
-}
-
-
-export type UsersPageType = {
-    users: Array<UserType>
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    isFetching: boolean
-    isFollowingInProgress: Array<number>
-}
-export type UserType = {
-    name: string
-    id: number
-    photos: UserPhotoType
-    status: string
-    followed: boolean
-}
-type UserPhotoType = {
-    small: string
-    large: string
-}
-
-export type ProfilePageType = {
-    postText: string
-    postsData: Array<PostType>
-    profile: UserProfileType
-}
-export type UserProfileType = {
-    userId: number
-    aboutMe: string
-    contacts: {
-        facebook: string
-        website: string
-        vk: string
-        twitter: string
-        instagram: string
-        youtube: string
-        github: string
-        mainLink: string
-    },
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    photos: {
-        small: string
-        large: string
-    }
-}
-export type PostType = {
-    id: string
-    message: string
-    likesCount: number
-}
-
-
-
-
-export type AuthUserType = {
-    messages: []
-    data: UserDataType
-    isAuth: boolean
-}
-export type UserDataType = {
-    id: number
-    email: string
-    login: string
-}
-
+import { dialogsReducer } from "./dialogs-reducer"
+import { profileReducer } from "./profile-reducer"
 
 
 export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogPageType
+    // profilePage: ProfilePageType
+    // dialogsPage: DialogPageType
 }
 export type StoreType = {
     _state: RootStateType
@@ -102,9 +17,8 @@ export type StoreType = {
     dispatch: (action: any) => any
 }
 
-export type ActionTypes = ProfileActionTypes | DialogsActionTypes | UsersActionTypes | AuthActionTypes
 
-const store: StoreType = {
+const store: any = {
     _state: {
         profilePage: {
             postText: '',
@@ -114,9 +28,6 @@ const store: StoreType = {
                 { id: v1(), message: "Hey, it's my second post here", likesCount: 2 },
                 { id: v1(), message: "This is a mapped post", likesCount: 1000 },
             ],
-            //@ts-ignore
-            profile: {}
-
         },
         dialogsPage: {
             dialogsData: [
@@ -143,7 +54,7 @@ const store: StoreType = {
         console.log('state was changed');
     },
     addPost(postText: string) {
-        const newPost: PostType = { // типизируем объект сразу при создании
+        const newPost: any = { // типизируем объект сразу при создании
             id: v1(),
             message: postText,
             likesCount: 0
@@ -159,7 +70,7 @@ const store: StoreType = {
     subscribe(observer: (state: RootStateType) => void) {
         this._callSubscriber = observer
     },
-    dispatch(action) {
+    dispatch(action: any) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
 

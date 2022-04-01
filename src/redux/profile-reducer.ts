@@ -1,5 +1,4 @@
 import { v1 } from "uuid";
-import { PostType, ProfilePageType, UserProfileType } from "./redux";
 const ADD_POST = 'ADD-POST'
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
 
@@ -83,3 +82,37 @@ export const setProfilePageAC = (profile: UserProfileType) => {
 
 export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof setProfilePageAC>
 
+
+
+
+export type ProfilePageType = {
+    postText: string
+    postsData: Array<PostType>
+    profile: UserProfileType
+}
+export type UserProfileType = {
+    userId: number
+    aboutMe: string
+    contacts: {
+        facebook: string
+        website: string
+        vk: string
+        twitter: string
+        instagram: string
+        youtube: string
+        github: string
+        mainLink: string
+    },
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    photos: {
+        small: string
+        large: string
+    }
+}
+export type PostType = {
+    id: string
+    message: string
+    likesCount: number
+}

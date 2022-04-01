@@ -1,8 +1,8 @@
-import { authReducer } from './auth-reducer';
+import { AuthActionTypes, authReducer } from './auth-reducer';
 import { combineReducers, createStore } from 'redux'
-import { dialogsReducer } from './dialogs-reducer';
-import { profileReducer } from './profile-reducer';
-import { usersReducer } from './users-reducer';
+import { DialogsActionTypes, dialogsReducer } from './dialogs-reducer';
+import { ProfileActionTypes, profileReducer } from './profile-reducer';
+import { UsersActionTypes, usersReducer } from './users-reducer';
 
 let rootReducers = combineReducers({
     profilePage: profileReducer,
@@ -11,11 +11,10 @@ let rootReducers = combineReducers({
     auth: authReducer
 })
 
-// type RootState = typeof rootReducers;
-// export type ReduxStateType = ReturnType<RootState>
-
 
 export type ReduxStateType = ReturnType<typeof rootReducers>
+export type ActionTypes = ProfileActionTypes | DialogsActionTypes | UsersActionTypes | AuthActionTypes
+
 
 let store = createStore(rootReducers);
 export default store;

@@ -1,5 +1,4 @@
 import { v1 } from "uuid";
-import { DialogPageType } from "./redux";
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 const SEND_MESSAGE = 'SEND-MESSAGE'
@@ -58,3 +57,16 @@ export const updateMessageAC = (messageBody: string) => {
     } as const
 }
 
+export type DialogPageType = {
+    dialogsData: Array<DialogType>
+    messagesData: Array<MessageType>
+    messageText: string
+}
+type DialogType = {
+    id: string
+    name: string
+}
+type MessageType = {
+    id: string
+    message: string
+}
