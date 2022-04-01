@@ -1,6 +1,5 @@
-import { ThunkAction } from "redux-thunk";
 import { usersAPI } from "./API/api";
-import { ActionTypes, ReduxStateType } from "./redux-store";
+import { AppThunk } from "./redux-store";
 
 const initialState: UsersPageType = {
     users: [],
@@ -107,11 +106,10 @@ export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress:
 
 
 
-export const getUsersTH = (pageNumber: number, pageSize: number): ThunkAction<void, ReduxStateType, unknown, ActionTypes> => {
+export const getUsersTH = (pageNumber: number, pageSize: number): AppThunk => {
     return (dispatch) => {
-
         dispatch(toggleIsFetchingAC(true))
-        dispatch(setCurrentPageAC(pageNumber)) //можно ли здесь не дублировать код
+        dispatch(setCurrentPageAC(pageNumber))
 
         usersAPI.getUsers(pageNumber, pageSize).then(data => {
             dispatch(setUsersAC(data.items))
