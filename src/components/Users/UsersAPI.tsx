@@ -16,7 +16,9 @@ type UserAPIType = {
     setUsers: (users: UserType[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalUsersCount: number) => void
-    toggleIsFetchingAC: (isFetching: boolean) => void
+    toggleIsFetching: (isFetching: boolean) => void
+    toggleFollowingProgress: (userId: number, isFollowingInProgress: boolean) => void
+    isFollowingInProgress: Array<number>
     isFetching: boolean
 }
 
@@ -24,24 +26,23 @@ class UsersAPI extends React.Component<UserAPIType> {
 
     //TODO сделать норм пагинацию
     private _componentDidMount = () => {
-        this.props.toggleIsFetchingAC(true);
+        this.props.toggleIsFetching(true);
 
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.setUsers(data.items);
             this.props.setTotalUsersCount(data.totalCount);
-            this.props.toggleIsFetchingAC(false);
+            this.props.toggleIsFetching(false);
         });
     };
 
 
     getNewUsers = (pageNumber: number) => {
-        this.props.toggleIsFetchingAC(true)
+        this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber)
 
         usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            debugger
             this.props.setUsers(data.items)
-            this.props.toggleIsFetchingAC(false)
+            this.props.toggleIsFetching(false)
         })
     }
 
@@ -70,7 +71,9 @@ class UsersAPI extends React.Component<UserAPIType> {
             <Users pageNumbers={mappedPages}
                 users={this.props.users}
                 followUser={this.props.followUser}
-                unfollowUser={this.props.unfollowUser} />
+                unfollowUser={this.props.unfollowUser}
+                toggleFollowingProgress={this.props.toggleFollowingProgress}
+                isFollowingInProgress={this.props.isFollowingInProgress} />
         </>
 
     }

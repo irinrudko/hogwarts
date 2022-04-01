@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { UserType } from "../../redux/redux";
 import { ReduxStateType } from "../../redux/redux-store";
-import { followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes } from "../../redux/users-reducer";
+import { followUserAC, setCurrentPageAC, setTotalUsersCountAC, setUersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes } from "../../redux/users-reducer";
 import UsersAPI from "./UsersAPI";
 
 const mapStateToProps = (state: ReduxStateType) => {
@@ -11,7 +11,8 @@ const mapStateToProps = (state: ReduxStateType) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isFollowingInProgress: state.usersPage.isFollowingInProgress
     }
 }
 
@@ -32,8 +33,11 @@ const mapDispatchToProps = (dispatch: (action: UsersActionTypes) => void) => {
         setTotalUsersCount: (totalUsersCount: number) => {
             dispatch(setTotalUsersCountAC(totalUsersCount))
         },
-        toggleIsFetchingAC: (isFetching: boolean) => {
+        toggleIsFetching: (isFetching: boolean) => {
             dispatch(toggleIsFetchingAC(isFetching))
+        },
+        toggleFollowingProgress: (userId: number, isFollowingInProgress: boolean) => {
+            dispatch(toggleFollowingProgressAC(userId, isFollowingInProgress))
         }
     }
 }

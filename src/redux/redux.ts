@@ -26,6 +26,7 @@ export type UsersPageType = {
     pageSize: number
     currentPage: number
     isFetching: boolean
+    isFollowingInProgress: Array<number>
 }
 export type UserType = {
     name: string
