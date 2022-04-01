@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { ReduxStateType } from "../../redux/redux-store";
-import { followUserAC, getUsersTH, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUserAC, UsersActionTypes, UserType } from "../../redux/users-reducer";
+import { followUser, getUsersTH, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUser, UsersActionTypes, UserType } from "../../redux/users-reducer";
 import UsersAPI from "./UsersAPI";
 
 const mapStateToProps = (state: ReduxStateType) => {
@@ -17,12 +17,6 @@ const mapStateToProps = (state: ReduxStateType) => {
 
 const mapDispatchToProps = (dispatch: (action: UsersActionTypes | any) => void) => {
     return {
-        followUser: (userId: number) => {
-            dispatch(followUserAC(userId))
-        },
-        unfollowUser: (userId: number) => {
-            dispatch(unfollowUserAC(userId))
-        },
         setUsers: (users: UserType[]) => {
             dispatch(setUsersAC(users))
         },
@@ -40,6 +34,12 @@ const mapDispatchToProps = (dispatch: (action: UsersActionTypes | any) => void) 
         },
         getUsers: (pageNumber: number, pageSize: number) => {
             dispatch(getUsersTH(pageNumber, pageSize))
+        },
+        followUser: (userId: number) => {
+            dispatch(followUser(userId))
+        },
+        unfollowUser: (userId: number) => {
+            dispatch(unfollowUser(userId))
         },
     }
 }

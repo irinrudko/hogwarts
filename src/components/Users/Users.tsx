@@ -36,25 +36,13 @@ export class Users extends React.Component<UserPropsType> {
                             <div>
                                 {u.followed
                                     ? <button disabled={this.props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {
-                                        this.props.toggleFollowingProgress(u.id, true)
-                                        usersAPI.unfollowUser(u.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                this.props.unfollowUser(u.id)
-                                            }
-                                            this.props.toggleFollowingProgress(u.id, false)
-                                        })
+                                        this.props.unfollowUser(u.id)
                                     }
 
                                     }>Unfollow</button>
                                     : <button disabled={this.props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {
-                                        this.props.toggleFollowingProgress(u.id, true)
 
-                                        usersAPI.followUser(u.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                this.props.followUser(u.id)
-                                            }
-                                            this.props.toggleFollowingProgress(u.id, false)
-                                        })
+                                        this.props.followUser(u.id)
                                     }
                                     }>Follow</button>}
                             </div>
