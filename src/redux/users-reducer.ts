@@ -1,4 +1,6 @@
+import { ThunkAction } from "redux-thunk";
 import { usersAPI } from "./API/api";
+import { ActionTypes, ReduxStateType } from "./redux-store";
 
 const initialState: UsersPageType = {
     users: [],
@@ -105,8 +107,8 @@ export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress:
 
 
 
-export const getUsersTH = (pageNumber: number, pageSize: number) => {
-    return (dispatch: any) => {
+export const getUsersTH = (pageNumber: number, pageSize: number): ThunkAction<void, ReduxStateType, unknown, ActionTypes> => {
+    return (dispatch) => {
 
         dispatch(toggleIsFetchingAC(true))
         dispatch(setCurrentPageAC(pageNumber)) //можно ли здесь не дублировать код
@@ -117,6 +119,8 @@ export const getUsersTH = (pageNumber: number, pageSize: number) => {
         })
     }
 }
+
+
 
 export type UsersPageType = {
     users: Array<UserType>
