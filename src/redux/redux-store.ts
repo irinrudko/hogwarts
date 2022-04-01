@@ -1,5 +1,6 @@
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import thunkMiddleware from 'redux-thunk'
 import { AuthActionTypes, authReducer } from './auth-reducer';
-import { combineReducers, createStore } from 'redux'
 import { DialogsActionTypes, dialogsReducer } from './dialogs-reducer';
 import { ProfileActionTypes, profileReducer } from './profile-reducer';
 import { UsersActionTypes, usersReducer } from './users-reducer';
@@ -16,7 +17,7 @@ export type ReduxStateType = ReturnType<typeof rootReducers>
 export type ActionTypes = ProfileActionTypes | DialogsActionTypes | UsersActionTypes | AuthActionTypes
 
 
-let store = createStore(rootReducers);
+let store = createStore(rootReducers, applyMiddleware(thunkMiddleware));
 export default store;
 
 //@ts-ignore
