@@ -1,4 +1,6 @@
 import { v1 } from "uuid";
+import { usersAPI } from "./API/api";
+import { AppThunk } from "./redux-store";
 const ADD_POST = 'ADD-POST'
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
 
@@ -83,6 +85,14 @@ export const setProfilePageAC = (profile: UserProfileType) => {
 export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof setProfilePageAC>
 
 
+
+export const setProfilePage = (userId: string): AppThunk => {
+    return (dispatch) => {
+        usersAPI.getUserProfile(userId).then(response => {
+            dispatch(setProfilePageAC(response.data))
+        })
+    }
+}
 
 
 export type ProfilePageType = {
