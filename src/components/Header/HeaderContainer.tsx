@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { AuthActionTypes, setUserDataAC, UserDataType } from '../../redux/auth-reducer';
+import { AuthActionTypes, authMe, setUserDataAC, UserDataType } from '../../redux/auth-reducer';
 import { ReduxStateType } from '../../redux/redux-store';
 import Header from './Header';
 
@@ -13,10 +12,13 @@ const mapStateToProps = (state: ReduxStateType): MapStateToPropsHeaderType => {
         data: state.auth.data
     }
 }
-const mapDispatchToProps = (dispatch: (action: AuthActionTypes) => void): MapDispatchToPropsHeaderType => {
+const mapDispatchToProps = (dispatch: (action: AuthActionTypes | any) => void): MapDispatchToPropsHeaderType => {
     return {
         setUserData: ({ id, email, login }: UserDataType) => {
             dispatch(setUserDataAC(id, email, login))
+        },
+        authMe: () => {
+            dispatch(authMe())
         }
     }
 }
@@ -29,6 +31,7 @@ type MapStateToPropsHeaderType = {
 }
 type MapDispatchToPropsHeaderType = {
     setUserData: ({ id, email, login }: UserDataType) => void
+    authMe: () => void
 }
 
 export type OwnHeaderPropsType = MapStateToPropsHeaderType & MapDispatchToPropsHeaderType;
@@ -36,17 +39,7 @@ export type OwnHeaderPropsType = MapStateToPropsHeaderType & MapDispatchToPropsH
 class HeaderContainer extends React.Component<OwnHeaderPropsType> {
 
     componentDidMount = () => {
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let { id, email, login } = response.data.data
-                    this.props.setUserData({ id, email, login })
-                }
-            })
-
+        this.props.authMe()
     }
 
     render = () => {
