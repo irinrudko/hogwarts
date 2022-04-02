@@ -86,7 +86,7 @@ export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeo
 
 
 
-export const setProfilePage = (userId: string): AppThunk => {
+export const getProfilePage = (userId: string): AppThunk => {
     return (dispatch) => {
         usersAPI.getUserProfile(userId).then(response => {
             dispatch(setProfilePageAC(response.data))

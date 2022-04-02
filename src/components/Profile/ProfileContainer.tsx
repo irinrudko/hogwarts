@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
-import { ProfileActionTypes, setProfilePage, UserProfileType } from '../../redux/profile-reducer';
+import { ProfileActionTypes, getProfilePage, UserProfileType } from '../../redux/profile-reducer';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { ReduxStateType } from '../../redux/redux-store';
@@ -13,8 +13,8 @@ const mapStateToProps = (state: ReduxStateType): MapStateToPropsProfileType => {
 }
 const mapDispatchToProps = (dispatch: (action: ProfileActionTypes | any) => void): MapDispatchToPropsProfileType => {
     return {
-        setProfilePage: (userId: string) => {
-            dispatch(setProfilePage(userId))
+        getProfilePage: (userId: string) => {
+            dispatch(getProfilePage(userId))
         }
     }
 }
@@ -23,7 +23,7 @@ type MapStateToPropsProfileType = {
     profile: UserProfileType
 }
 type MapDispatchToPropsProfileType = {
-    setProfilePage: (userId: string) => void
+    getProfilePage: (userId: string) => void
 }
 type MatchParamsType = {
     userId?: string
@@ -38,7 +38,7 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType> {
     componentDidMount = () => {
         let userId = this.props.match.params.userId;
         if (userId) {
-            this.props.setProfilePage(userId)
+            this.props.getProfilePage(userId)
         }
 
     }
