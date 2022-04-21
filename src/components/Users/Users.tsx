@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../Users/Users.module.css'
 import userPhoto from '../../assets/icons/avatar-male.png'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { UserType } from '../../redux/users-reducer';
 
 
@@ -12,12 +12,16 @@ type UserPropsType = {
     unfollowUser: (userId: number) => void
     toggleFollowingProgress: (userId: number, isFollowingInProgress: boolean) => void
     isFollowingInProgress: Array<number>
+    isAuth: boolean
 }
 
 
 export class Users extends React.Component<UserPropsType> {
 
+
     render = () => {
+        if (!this.props.isAuth) return <Redirect to={'/login'} />
+
         return <div>
 
             <div className={style.pageNumber}>

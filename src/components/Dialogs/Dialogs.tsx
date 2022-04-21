@@ -2,6 +2,7 @@ import React, { ChangeEvent } from 'react';
 import style from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import { Redirect } from 'react-router-dom';
 
 type DialogItemType = {
     id: string
@@ -19,10 +20,11 @@ type DialogsType = {
     messageText: string
     sendMessage: (text: string) => void
     onChange: (text: string) => void
+    isAuth: boolean
 }
 
 
-const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMessage, onChange }) => {
+const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMessage, onChange, isAuth }) => {
     let dialogsElements = dialogs.map(dialog => (<div key={dialog.id}> <DialogItem name={dialog.name} id={dialog.id} /></div>))
     let messagesElements = messages.map(el => <div key={el.id}><Message message={el.message} /></div>)
 
@@ -34,6 +36,7 @@ const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMe
         sendMessage(messageText)
     }
 
+    if (!isAuth) return <Redirect to={'/login'} />
     return (
         <div className={style.dialogs}>
             <div className={style.people}>{dialogsElements}</div>

@@ -19,6 +19,7 @@ type UserAPIType = {
     isFollowingInProgress: Array<number>
     isFetching: boolean
     getUsers: (pageNumber: number, pageSize: number) => void
+    isAuth: boolean
 }
 
 class UsersAPI extends React.Component<UserAPIType> {
@@ -59,7 +60,8 @@ class UsersAPI extends React.Component<UserAPIType> {
                 followUser={this.props.followUser}
                 unfollowUser={this.props.unfollowUser}
                 toggleFollowingProgress={this.props.toggleFollowingProgress}
-                isFollowingInProgress={this.props.isFollowingInProgress} />
+                isFollowingInProgress={this.props.isFollowingInProgress}
+                isAuth={this.props.isAuth} />
         </>
 
     }

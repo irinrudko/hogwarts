@@ -8,7 +8,8 @@ let mapStateToProps = (state: ReduxStateType) => {
     return {
         dialogs: state.dialogsPage.dialogsData,
         messages: state.dialogsPage.messagesData,
-        messageText: state.dialogsPage.messageText
+        messageText: state.dialogsPage.messageText,
+        isAuth: state.auth.isAuth
     }
 }
 

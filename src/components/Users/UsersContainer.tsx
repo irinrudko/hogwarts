@@ -11,7 +11,8 @@ const mapStateToProps = (state: ReduxStateType) => {
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        isFollowingInProgress: state.usersPage.isFollowingInProgress
+        isFollowingInProgress: state.usersPage.isFollowingInProgress,
+        isAuth: state.auth.isAuth
     }
 }
 
