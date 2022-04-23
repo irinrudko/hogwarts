@@ -20,8 +20,6 @@ export class Users extends React.Component<UserPropsType> {
 
 
     render = () => {
-        if (!this.props.isAuth) return <Redirect to={'/login'} />
-
         return <div>
 
             <div className={style.pageNumber}>

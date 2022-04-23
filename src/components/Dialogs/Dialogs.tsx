@@ -36,7 +36,6 @@ const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMe
         sendMessage(messageText)
     }
 
-    if (!isAuth) return <Redirect to={'/login'} />
     return (
         <div className={style.dialogs}>
             <div className={style.people}>{dialogsElements}</div>
