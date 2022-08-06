@@ -2,9 +2,11 @@ import React from 'react';
 import { UserProfileType } from '../../../redux/profile-reducer';
 import { Preloader } from '../../common/Preloader/Preloader';
 import style from './ProfileInfo.module.css';
+import { ProfileStatus } from './ProfileStatus/ProfileStatus';
 
 type ProfileInfoType = {
     profile: UserProfileType
+    status: string
 }
 
 const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
@@ -35,11 +37,11 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
             <div>
                 <h2>{props.profile.fullName}</h2>
             </div>
+            <ProfileStatus status={props.status} />
 
             <div className={style.description}>
                 <div>{props.profile.aboutMe}</div>
                 <div>{props.profile.lookingForAJobDescription}</div>
-
                 <div>{contacts}</div>
             </div>
         </>

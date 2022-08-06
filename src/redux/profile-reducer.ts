@@ -1,5 +1,5 @@
 import { v1 } from "uuid";
-import { usersAPI } from "./API/api";
+import { profileAPI, usersAPI } from "./API/api";
 import { AppThunk } from "./redux-store";
 const ADD_POST = 'ADD-POST'
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
@@ -34,6 +34,7 @@ const initialState: ProfilePageType = {
             large: '',
         }
     },
+    userStatus: ''
 };
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionTypes): ProfilePageType => {
@@ -59,6 +60,10 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
             return {
                 ...state, profile: { ...action.profile }
             }
+        case 'SET-USER-STATUS':
+            return {
+                ...state, userStatus: action.userStatus
+            }
         default: return state
     }
 }
@@ -81,8 +86,14 @@ export const setProfilePageAC = (profile: UserProfileType) => {
         profile
     } as const
 }
+export const setUserStatus = (userStatus: string) => {
+    return {
+        type: 'SET-USER-STATUS',
+        userStatus
+    } as const
+}
 
-export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof setProfilePageAC>
+export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof setProfilePageAC> | ReturnType<typeof setUserStatus>
 
 
 
@@ -93,12 +104,20 @@ export const getProfilePage = (userId: string): AppThunk => {
         })
     }
 }
+export const getUserStatus = (userId: string): AppThunk => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId).then(response => {
+            dispatch(setUserStatus(response.data))
+        })
+    }
+}
 
 
 export type ProfilePageType = {
     postText: string
     postsData: Array<PostType>
     profile: UserProfileType
+    userStatus: string
 }
 export type UserProfileType = {
     userId: number

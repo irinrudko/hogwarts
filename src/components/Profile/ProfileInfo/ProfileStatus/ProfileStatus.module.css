@@ -1,0 +1,6 @@
+.profileStatus {
+  grid-area: main;
+  background-color: #ffffff;
+  border: 1px solid #D8DFEB;
+  height: inherit;
+}

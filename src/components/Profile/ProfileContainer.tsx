@@ -10,7 +10,8 @@ import { withAuthRedirect } from '../hoc/withAuthReducer';
 
 const mapStateToProps = (state: ReduxStateType): MapStateToPropsProfileType => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        status: state.profilePage.userStatus
     }
 }
 const mapDispatchToProps = (dispatch: (action: ProfileActionTypes | any) => void): MapDispatchToPropsProfileType => {
@@ -23,6 +24,7 @@ const mapDispatchToProps = (dispatch: (action: ProfileActionTypes | any) => void
 
 type MapStateToPropsProfileType = {
     profile: UserProfileType
+    status: string
 }
 type MapDispatchToPropsProfileType = {
     getProfilePage: (userId: string) => void

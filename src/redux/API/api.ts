@@ -18,7 +18,19 @@ export const usersAPI = {
         return instance.delete(`follow/${userId}`).then(response => response.data)
     },
     getUserProfile(userId: string) {
+        console.warn('Obsolete method. Please use profileAPI object');
+        return profileAPI.getUserProfile(userId)
+    }
+}
+export const profileAPI = {
+    getUserProfile(userId: string) {
         return instance.get(`profile/${userId}`)
+    },
+    getStatus(userId: string) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    updateStatus(status: string) {
+        return instance.get(`profile/status`, { data: { status } })
     }
 }
 

@@ -4,10 +4,10 @@ import { AppThunk } from "./redux-store";
 const initialState: UsersPageType = {
     users: [],
     totalUsersCount: 0,
-    pageSize: 3,
+    pageSize: 100,
     currentPage: 1,
     isFetching: false,
-    isFollowingInProgress: []
+    isFollowingInProgress: [],
 };
 
 export const usersReducer = (state: UsersPageType = initialState, action: UsersActionTypes): UsersPageType => {
@@ -103,6 +103,7 @@ export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress:
         isFollowingInProgress
     } as const
 }
+
 
 
 /////

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../Users/Users.module.css'
 import userPhoto from '../../assets/icons/avatar-male.png'
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { UserType } from '../../redux/users-reducer';
 
 
@@ -21,7 +21,6 @@ export class Users extends React.Component<UserPropsType> {
 
     render = () => {
         return <div>
-
             <div className={style.pageNumber}>
                 {this.props.pageNumbers}
             </div>

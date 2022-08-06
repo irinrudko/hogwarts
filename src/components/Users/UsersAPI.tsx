@@ -28,18 +28,16 @@ class UsersAPI extends React.Component<UserAPIType> {
     componentDidMount = () => {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
     };
-
     getNewUsers = (pageNumber: number) => {
         this.props.getUsers(pageNumber, this.props.pageSize)
     }
-
     render = () => {
         const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         const pages = [];
+
         for (let i = 1; i <= 10; i++) {
             pages.push(i)
         }
-
 
         const mappedPages = pages.map(page => {
             return (<span className={this.props.currentPage === page ? style.currentPage : ''}

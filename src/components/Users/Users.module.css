@@ -5,7 +5,7 @@
 
 .pageNumber {
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-between;
     cursor: pointer;
     font-size: 20px;
