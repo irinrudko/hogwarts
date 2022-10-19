@@ -3,6 +3,4 @@
 A pet proect used to get an idea and learn React Class Components, the flow of Model–view–presenter pattern, FLUX pattern.
 
 ### `TypeScript react redux react-redux formik`
-### `Storybook material UI`
-
-### `jest unit_tests snapshot_integration_tests`
+### `jest unit_tests`
