@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/social-network/static/css/main.39776ada.chunk.css",
+    "main.js": "/social-network/static/js/main.9c0bbbf6.chunk.js",
+    "main.js.map": "/social-network/static/js/main.9c0bbbf6.chunk.js.map",
+    "runtime-main.js": "/social-network/static/js/runtime-main.46aff9ab.js",
+    "runtime-main.js.map": "/social-network/static/js/runtime-main.46aff9ab.js.map",
+    "static/js/2.d18b5268.chunk.js": "/social-network/static/js/2.d18b5268.chunk.js",
+    "static/js/2.d18b5268.chunk.js.map": "/social-network/static/js/2.d18b5268.chunk.js.map",
+    "static/js/3.92a1998e.chunk.js": "/social-network/static/js/3.92a1998e.chunk.js",
+    "static/js/3.92a1998e.chunk.js.map": "/social-network/static/js/3.92a1998e.chunk.js.map",
+    "index.html": "/social-network/index.html",
+    "static/css/main.39776ada.chunk.css.map": "/social-network/static/css/main.39776ada.chunk.css.map",
+    "static/js/2.d18b5268.chunk.js.LICENSE.txt": "/social-network/static/js/2.d18b5268.chunk.js.LICENSE.txt",
+    "static/media/avatar-male.e5117e8e.png": "/social-network/static/media/avatar-male.e5117e8e.png",
+    "static/media/preloader.f13fb50f.svg": "/social-network/static/media/preloader.f13fb50f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.46aff9ab.js",
+    "static/js/2.d18b5268.chunk.js",
+    "static/css/main.39776ada.chunk.css",
+    "static/js/main.9c0bbbf6.chunk.js"
+  ]
+}
