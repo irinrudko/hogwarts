@@ -1,10 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import { ReduxStateType } from "../../redux/redux-store";
-import { followUser, getUsersTH, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowUser, UsersActionTypes, UserType } from "../../redux/users-reducer";
-import { withAuthRedirect } from "../hoc/withAuthReducer";
-import UsersAPI from "./UsersAPI";
+import React from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { ReduxStateType } from '../../redux/redux-store'
+import {
+    followUser,
+    getUsersTH,
+    setCurrentPageAC,
+    setTotalUsersCountAC,
+    setUsersAC,
+    toggleFollowingProgressAC,
+    toggleIsFetchingAC,
+    unfollowUser,
+    UsersActionTypes,
+    UserType,
+} from '../../redux/users-reducer'
+import { withAuthRedirect } from '../hoc/withAuthReducer'
+import UsersAPI from './UsersAPI'
 
 const mapStateToProps = (state: ReduxStateType) => {
     return {
@@ -14,7 +25,7 @@ const mapStateToProps = (state: ReduxStateType) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         isFollowingInProgress: state.usersPage.isFollowingInProgress,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
     }
 }
 
@@ -48,6 +59,6 @@ const mapDispatchToProps = (dispatch: (action: UsersActionTypes | any) => void) 
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, mapDispatchToProps),
-    withAuthRedirect
+    connect(mapStateToProps, mapDispatchToProps)
+    // withAuthRedirect
 )(UsersAPI)
