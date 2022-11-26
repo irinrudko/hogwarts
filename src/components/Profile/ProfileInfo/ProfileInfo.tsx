@@ -3,6 +3,7 @@ import { UserProfileType } from '../../../redux/profile-reducer'
 import { Preloader } from '../../common/Preloader/Preloader'
 import style from './ProfileInfo.module.css'
 import { ProfileStatus } from './ProfileStatus/ProfileStatus'
+import wizardAvatar from '../../../assets/icons/avatar-wizard-male.jpeg'
 
 type ProfileInfoType = {
     profile: UserProfileType
@@ -29,7 +30,7 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
     return (
         <>
             <div>
-                <img src={props.profile.photos.large} alt="profile" />
+                <img src={props.profile.photos.large ? props.profile.photos.large : wizardAvatar} alt="profile" />
             </div>
             <div>
                 <h2>{props.profile.fullName}</h2>
