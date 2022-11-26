@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/social-network/static/css/main.e4f72495.chunk.css",
-    "main.js": "/social-network/static/js/main.b8ef2ecc.chunk.js",
-    "main.js.map": "/social-network/static/js/main.b8ef2ecc.chunk.js.map",
-    "runtime-main.js": "/social-network/static/js/runtime-main.46aff9ab.js",
-    "runtime-main.js.map": "/social-network/static/js/runtime-main.46aff9ab.js.map",
-    "static/js/2.13bcdd01.chunk.js": "/social-network/static/js/2.13bcdd01.chunk.js",
-    "static/js/2.13bcdd01.chunk.js.map": "/social-network/static/js/2.13bcdd01.chunk.js.map",
-    "static/js/3.92a1998e.chunk.js": "/social-network/static/js/3.92a1998e.chunk.js",
-    "static/js/3.92a1998e.chunk.js.map": "/social-network/static/js/3.92a1998e.chunk.js.map",
-    "index.html": "/social-network/index.html",
-    "static/css/main.e4f72495.chunk.css.map": "/social-network/static/css/main.e4f72495.chunk.css.map",
-    "static/js/2.13bcdd01.chunk.js.LICENSE.txt": "/social-network/static/js/2.13bcdd01.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/social-network/static/media/bg.74ebf0b8.jpeg",
-    "static/media/preloader.f13fb50f.svg": "/social-network/static/media/preloader.f13fb50f.svg"
+    "main.css": "/hogwarts/static/css/main.3b60faf3.chunk.css",
+    "main.js": "/hogwarts/static/js/main.5958e58f.chunk.js",
+    "main.js.map": "/hogwarts/static/js/main.5958e58f.chunk.js.map",
+    "runtime-main.js": "/hogwarts/static/js/runtime-main.73d7dc74.js",
+    "runtime-main.js.map": "/hogwarts/static/js/runtime-main.73d7dc74.js.map",
+    "static/js/2.9c51e032.chunk.js": "/hogwarts/static/js/2.9c51e032.chunk.js",
+    "static/js/2.9c51e032.chunk.js.map": "/hogwarts/static/js/2.9c51e032.chunk.js.map",
+    "static/js/3.2ba66ae7.chunk.js": "/hogwarts/static/js/3.2ba66ae7.chunk.js",
+    "static/js/3.2ba66ae7.chunk.js.map": "/hogwarts/static/js/3.2ba66ae7.chunk.js.map",
+    "index.html": "/hogwarts/index.html",
+    "static/css/main.3b60faf3.chunk.css.map": "/hogwarts/static/css/main.3b60faf3.chunk.css.map",
+    "static/js/2.9c51e032.chunk.js.LICENSE.txt": "/hogwarts/static/js/2.9c51e032.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/hogwarts/static/media/bg.74ebf0b8.jpeg",
+    "static/media/preloader.f13fb50f.svg": "/hogwarts/static/media/preloader.f13fb50f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.46aff9ab.js",
-    "static/js/2.13bcdd01.chunk.js",
-    "static/css/main.e4f72495.chunk.css",
-    "static/js/main.b8ef2ecc.chunk.js"
+    "static/js/runtime-main.73d7dc74.js",
+    "static/js/2.9c51e032.chunk.js",
+    "static/css/main.3b60faf3.chunk.css",
+    "static/js/main.5958e58f.chunk.js"
   ]
 }
