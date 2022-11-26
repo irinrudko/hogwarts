@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { routes } from '../../pages/router'
 import style from './Navbar.module.css' //style – это не зарезервированное слово. может быть любое
 
 const NavBar = () => {
     return (
         <nav className={style.nav}>
             <ul className={style.menu}>
-                <NavLink to="/hogwarts/profile" className={`${style.link} ${style.active}`}>
+                <NavLink to={routes.profile} className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -18,7 +19,7 @@ const NavBar = () => {
                         House
                     </li>
                 </NavLink>
-                <NavLink to="/hogwarts/dialogs" className={`${style.link} ${style.active}`}>
+                <NavLink to={routes.dialogs} className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -31,7 +32,7 @@ const NavBar = () => {
                         Owl Post
                     </li>
                 </NavLink>
-                <NavLink to="/hogwarts/friends" className={`${style.link} ${style.active}`}>
+                <NavLink to={routes.friends} className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -50,7 +51,7 @@ const NavBar = () => {
                         Students
                     </li>
                 </NavLink>
-                <NavLink to="/hogwarts/users" className={`${style.link} ${style.active}`}>
+                <NavLink to={routes.users} className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
