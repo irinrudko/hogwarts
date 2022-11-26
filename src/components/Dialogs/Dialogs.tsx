@@ -25,7 +25,6 @@ type DialogsType = {
 const Dialogs: React.FC<DialogsType> = ({ dialogs, messages, messageText, sendMessage, onChange, isAuth }) => {
     let dialogsElements = dialogs.map((dialog) => (
         <div key={dialog.id}>
-            {' '}
             <DialogItem name={dialog.name} id={dialog.id} />
         </div>
     ))
