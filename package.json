@@ -1,6 +1,6 @@
 {
     "name": "social-network",
-    "homepage": "https://irinrudko.github.io/social-network",
+    "homepage": "https://my-net.vercel.app",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
