@@ -11,6 +11,7 @@ import UsersContainer from './components/Users/UsersContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import { Login } from './components/Login/Login'
+import { routes } from './pages/router'
 
 type AppType = {
     dispatch: (action: ActionTypes) => void
@@ -26,11 +27,11 @@ const App = (props: AppType) => {
                         <HeaderContainer />
                         <NavBar />
                         <main className="app-wrapper-content">
-                            <Route path="/hogwarts/profile/:userId" render={() => <ProfileContainer />} />
-                            <Route path="/hogwarts/dialogs" render={() => <DialogsContainer />} />
-                            <Route path="/hogwarts/friends" render={() => <Friends />} />
-                            <Route path="/hogwarts/users" render={() => <UsersContainer />} />
-                            <Route path="/hogwarts/login" render={() => <Login />} />
+                            <Route path={routes.profile} render={() => <ProfileContainer />} />
+                            <Route path={routes.dialogs} render={() => <DialogsContainer />} />
+                            <Route path={routes.friends} render={() => <Friends />} />
+                            <Route path={routes.users} render={() => <UsersContainer />} />
+                            <Route path={routes.login} render={() => <Login />} />
                         </main>
                     </div>
                 </div>
