@@ -1,5 +1,6 @@
 .item {
-    background-color: #ffffff;
-    border: 1px solid #D8DFEB;
+    background-color: var(--transparentBg);
     height: inherit;
+    border-radius: 15px;
+
 }

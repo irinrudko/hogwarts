@@ -1,15 +1,19 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    background-color: #ffffff;
-    border: 1px solid #D8DFEB;
+    background-color: var(--transparentBg);
     height: inherit;
+    color: #4c2234;
+    border-radius: 15px;
+}
+
+.personName {
+    color: #4c2234;
+    text-decoration: none;
 }
 
 .people {
     padding: 10px;
-
-
 }
 
 .chats {
@@ -18,14 +22,14 @@
 
 .people .item {
     padding: 20px;
-    background-color: rgb(180, 199, 156);
+    background-color: #ffffff76;
     border-bottom: 1px solid black;
 
 }
 
 .chats .item {
     padding: 23px;
-    background-color: beige;
+    background-color: #ffffffa9;
     border-bottom: 1px solid black;
 
 }

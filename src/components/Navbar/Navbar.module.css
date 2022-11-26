@@ -1,26 +1,28 @@
 .nav {
   grid-area: nav;
-  background-color: #ffffff;
-  border: 1px solid #D8DFEB;
-  border-right: none;
-  /* background-color: #ffffff; */
-
+  background-color: var(--transparentBg);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  max-width: 350px;
+  /* width: 250px; */
+  border-radius: 15px;
+  height: fit-content;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
 
 .item {
   display: flex;
   align-items: center;
   padding: 10px 10px;
-  /* justify-content: center; */
   list-style-type: none;
   font-size: 20px;
   width: 130px;
   cursor: pointer;
-
 }
 
 .link {
@@ -41,12 +43,12 @@
 .item:hover {
   background-color: #E8F1FF;
   border-radius: 7px;
-  color: #2D5BAA;
+  color: #4c2234;
 }
 
 /* change ico color on  start */
 .item:hover>svg {
-  background-color: #2D5BAA;
+  background-color: #4c2234;
 }
 
 .item:hover>svg path:nth-child(1) {

@@ -1,27 +1,8 @@
 .header {
   grid-area: header;
-  background-color: #2D5BAA;
   max-height: 64px;
   padding: 0 10px;
-}
-
-.header img {
-  width: 30px;
-  height: 30px;
-}
-
-.loginBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-
-  text-decoration: none;
-
-}
-
-.login {
-  cursor: pointer;
+  margin-top: 20px;
 }
 
 .container {
@@ -29,26 +10,38 @@
   justify-content: space-between;
 }
 
-.ico {
-  height: 40px;
-  width: 40px;
-  background-color: #fff;
-  border-radius: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.title {
+  color: #ffffff;
+  size: 22px;
+  line-height: 32px;
+  z-index: 2;
 }
 
-.logo {
+.logoContainer {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   max-width: 200px;
   max-height: 60px;
+  position: relative;
 }
 
-.title {
-  color: #ffffff;
-  size: 22px;
-  line-height: 32px;
+.logo {
+  position: absolute;
+  left: 86px;
+  top: -4px;
+  width: 35px;
+  z-index: 1;
+}
+
+.loginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+.login {
+  cursor: pointer;
 }

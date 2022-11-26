@@ -6,14 +6,13 @@
     "header header header"
     "nav main main";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  /* gap: 10px; */
-  height: 100vh;
-
+  grid-template-columns: 3fr 10fr;
+  gap: 40px;
+  min-height: 100vh;
 }
 
 .site-wrapper {
-  /* background-color: #b8bbba; */
+  background: url('../src//assets/bg.jpeg')
 }
 
 .app-wrapper-content {
@@ -28,7 +27,7 @@ a {
   line-height: 24px;
   /* letter-spacing: 0em; */
   /* text-align: left; */
-  color: #7E8EAB;
+  color: #ffffff
 }
 
 h1 {

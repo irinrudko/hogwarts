@@ -1,6 +1,14 @@
+.item {
+    background-color: var(--transparentBg);
+    overflow: scroll;
+    height: 100vh;
+    border-radius: 15px;
+
+}
+
 .currentPage {
     font-weight: bold;
-    color: #2D5BAA;
+    color: #4c2234;
 }
 
 .pageNumber {
