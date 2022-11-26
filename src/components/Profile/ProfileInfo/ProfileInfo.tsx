@@ -1,8 +1,8 @@
-import React from 'react';
-import { UserProfileType } from '../../../redux/profile-reducer';
-import { Preloader } from '../../common/Preloader/Preloader';
-import style from './ProfileInfo.module.css';
-import { ProfileStatus } from './ProfileStatus/ProfileStatus';
+import React from 'react'
+import { UserProfileType } from '../../../redux/profile-reducer'
+import { Preloader } from '../../common/Preloader/Preloader'
+import style from './ProfileInfo.module.css'
+import { ProfileStatus } from './ProfileStatus/ProfileStatus'
 
 type ProfileInfoType = {
     profile: UserProfileType
@@ -15,7 +15,6 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
         return <Preloader />
     }
 
-
     let contacts = Object.entries(props.profile.contacts || {}).map(([key, value]) => {
         return (
             <>
@@ -25,14 +24,12 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
                 </div>
             </>
         )
-    });
-
-
+    })
 
     return (
         <>
             <div>
-                <img src={props.profile.photos.large} />
+                <img src={props.profile.photos.large} alt="profile" />
             </div>
             <div>
                 <h2>{props.profile.fullName}</h2>
@@ -46,7 +43,6 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
             </div>
         </>
     )
-
 }
 
-export default ProfileInfo;
+export default ProfileInfo

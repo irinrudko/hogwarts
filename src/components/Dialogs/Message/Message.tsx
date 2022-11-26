@@ -1,17 +1,12 @@
-import { type } from 'os';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import style from './../Dialogs.module.css';
-
+import React from 'react'
+import style from './../Dialogs.module.css'
 
 type MessageType = {
-    message: string,
+    message: string
 }
 
 const Message = (props: MessageType) => {
-    return (
-        <div className={style.item}>{props.message}</div>
-    )
+    return <div className={style.item}>{props.message}</div>
 }
 
-export default Message;
+export default Message
