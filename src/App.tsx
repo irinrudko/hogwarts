@@ -26,11 +26,11 @@ const App = (props: AppType) => {
                         <HeaderContainer />
                         <NavBar />
                         <main className="app-wrapper-content">
-                            <Route path="/profile/:userId" render={() => <ProfileContainer />} />
-                            <Route path="/dialogs" render={() => <DialogsContainer />} />
-                            <Route path="/friends" render={() => <Friends />} />
-                            <Route path="/users" render={() => <UsersContainer />} />
-                            <Route path="/login" render={() => <Login />} />
+                            <Route path="/hogwarts/profile/:userId" render={() => <ProfileContainer />} />
+                            <Route path="/hogwarts/dialogs" render={() => <DialogsContainer />} />
+                            <Route path="/hogwarts/friends" render={() => <Friends />} />
+                            <Route path="/hogwarts/users" render={() => <UsersContainer />} />
+                            <Route path="/hogwarts/login" render={() => <Login />} />
                         </main>
                     </div>
                 </div>

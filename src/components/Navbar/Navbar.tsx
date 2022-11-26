@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <nav className={style.nav}>
             <ul className={style.menu}>
-                <NavLink to="/profile" className={`${style.link} ${style.active}`}>
+                <NavLink to="/hogwarts/profile" className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -18,7 +18,7 @@ const NavBar = () => {
                         House
                     </li>
                 </NavLink>
-                <NavLink to="/dialogs" className={`${style.link} ${style.active}`}>
+                <NavLink to="/hogwarts/dialogs" className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -31,7 +31,7 @@ const NavBar = () => {
                         Owl Post
                     </li>
                 </NavLink>
-                <NavLink to="/friends" className={`${style.link} ${style.active}`}>
+                <NavLink to="/hogwarts/friends" className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -50,7 +50,7 @@ const NavBar = () => {
                         Students
                     </li>
                 </NavLink>
-                <NavLink to="/users" className={`${style.link} ${style.active}`}>
+                <NavLink to="/hogwarts/users" className={`${style.link} ${style.active}`}>
                     <li className={style.item}>
                         <svg className={style.ico} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
