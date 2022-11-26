@@ -1,5 +1,5 @@
 export const routes = {
-    profile: '/profile',
+    profile: '/profile/:userId',
     dialogs: '/dialogs',
     friends: '/friends',
     users: '/users',
