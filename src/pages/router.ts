@@ -1,7 +1,7 @@
 export const routes = {
-    profile: '/hogwarts/profile/:userId',
-    dialogs: '/hogwarts/dialogs',
-    friends: '/hogwarts/friends',
-    users: '/hogwarts/users',
-    login: '/hogwarts/login',
+    profile: '/profile/:userId',
+    dialogs: '/dialogs',
+    friends: '/friends',
+    users: '/users',
+    login: '/login',
 }
