@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import NavBar from './components/Navbar/Navbar'
 import Friends from './components/Friends/Friends'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 import store, { ActionTypes, ReduxStateType } from './redux/redux-store'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import { Store } from 'redux'
@@ -20,7 +20,7 @@ type AppType = {
 
 const App = (props: AppType) => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <div className="site-wrapper">
                     <div className="app-wrapper">
@@ -36,7 +36,7 @@ const App = (props: AppType) => {
                     </div>
                 </div>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
