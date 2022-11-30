@@ -1,9 +1,9 @@
-import { v1 } from "uuid";
-import { profileAPI, usersAPI } from "./API/api";
-import { AppThunk } from "./redux-store";
+import { v1 } from 'uuid'
+import { profileAPI } from '../API/profileAPI'
+import { usersAPI } from '../API/usersAPI'
+import { AppThunk } from './redux-store'
 const ADD_POST = 'ADD-POST'
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT'
-
 
 const initialState: ProfilePageType = {
     postText: '',
@@ -11,7 +11,7 @@ const initialState: ProfilePageType = {
         { id: v1(), message: "Hi, how're you?", likesCount: 15 },
         { id: v1(), message: "Hey, it's my first post", likesCount: 20 },
         { id: v1(), message: "Hey, it's my second post here", likesCount: 2 },
-        { id: v1(), message: "This is a mapped post", likesCount: 1000 },
+        { id: v1(), message: 'This is a mapped post', likesCount: 1000 },
     ],
     profile: {
         userId: 2,
@@ -32,10 +32,10 @@ const initialState: ProfilePageType = {
         photos: {
             small: '',
             large: '',
-        }
+        },
     },
-    userStatus: ''
-};
+    userStatus: '',
+}
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionTypes): ProfilePageType => {
     switch (action.type) {
@@ -43,75 +43,79 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
             let newPost: PostType = {
                 id: v1(),
                 message: action.postText,
-                likesCount: 0
+                likesCount: 0,
             }
             return {
                 ...state,
                 postsData: [...state.postsData, newPost],
-                postText: ''
+                postText: '',
             }
         case CHANGE_POST_TEXT: {
             return {
                 ...state,
-                postText: action.newText
+                postText: action.newText,
             }
         }
         case 'SET-PROFILE-PAGE':
             return {
-                ...state, profile: { ...action.profile }
+                ...state,
+                profile: { ...action.profile },
             }
         case 'SET-USER-STATUS':
             return {
-                ...state, userStatus: action.userStatus
+                ...state,
+                userStatus: action.userStatus,
             }
-        default: return state
+        default:
+            return state
     }
 }
 
 export const addPostAC = (value: string) => {
     return {
         type: ADD_POST,
-        postText: value
+        postText: value,
     } as const
 }
 export const changePostTextAC = (value: string) => {
     return {
         type: CHANGE_POST_TEXT,
-        newText: value
+        newText: value,
     } as const
 }
 export const setProfilePageAC = (profile: UserProfileType) => {
     return {
         type: 'SET-PROFILE-PAGE',
-        profile
+        profile,
     } as const
 }
 export const setUserStatus = (userStatus: string) => {
     return {
         type: 'SET-USER-STATUS',
-        userStatus
+        userStatus,
     } as const
 }
 
-export type ProfileActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostTextAC> | ReturnType<typeof setProfilePageAC> | ReturnType<typeof setUserStatus>
-
-
+export type ProfileActionTypes =
+    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof changePostTextAC>
+    | ReturnType<typeof setProfilePageAC>
+    | ReturnType<typeof setUserStatus>
 
 export const getProfilePage = (userId: string): AppThunk => {
     return (dispatch) => {
-        usersAPI.getUserProfile(userId).then(response => {
+        usersAPI.getUserProfile(userId).then((response) => {
             dispatch(setProfilePageAC(response.data))
         })
     }
 }
 export const getUserStatus = (userId: string): AppThunk => {
     return (dispatch) => {
-        profileAPI.getStatus(userId).then(response => {
+        profileAPI.getStatus(userId).then((response) => {
             dispatch(setUserStatus(response.data))
         })
     }
 }
-
 
 export type ProfilePageType = {
     postText: string
@@ -131,7 +135,7 @@ export type UserProfileType = {
         youtube: string
         github: string
         mainLink: string
-    },
+    }
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string

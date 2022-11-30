@@ -1,4 +1,4 @@
-import { usersAPI } from './API/api'
+import { usersAPI } from '../API/usersAPI'
 import { AppThunk } from './redux-store'
 
 const initialState: UsersPageType = {

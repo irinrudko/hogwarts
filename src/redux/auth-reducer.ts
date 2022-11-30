@@ -1,4 +1,4 @@
-import { authAPI } from './API/api'
+import { authAPI } from '../API/authAPI'
 import { AppThunk } from './redux-store'
 
 const initialState: AuthUserType = {
