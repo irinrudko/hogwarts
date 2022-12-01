@@ -4,14 +4,25 @@ import { AppThunk } from './redux-store'
 const initialState: UsersPageType = {
     users: [],
     totalUsersCount: 0,
-    pageSize: 10,
+    pageSize: 100,
     currentPage: 1,
     isFetching: false,
     isFollowingInProgress: [],
+    friends: [],
 }
 
 export const usersReducer = (state: UsersPageType = initialState, action: UsersActionTypes): UsersPageType => {
     switch (action.type) {
+        case 'SET-USERS':
+            return {
+                ...state,
+                users: action.users,
+            }
+        case 'SET-FRIENDS':
+            return {
+                ...state,
+                friends: [...action.friends],
+            }
         case 'FOLLOW-USER':
             return {
                 ...state,
@@ -31,11 +42,6 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
                     }
                     return u
                 }),
-            }
-        case 'SET-USERS':
-            return {
-                ...state,
-                users: action.users,
             }
         case 'SET-CURRENT-PAGE':
             return {
@@ -64,68 +70,16 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
     }
 }
 
-export type UsersActionTypes =
-    | ReturnType<typeof followUserAC>
-    | ReturnType<typeof unfollowUserAC>
-    | ReturnType<typeof setUsersAC>
-    | ReturnType<typeof setCurrentPageAC>
-    | ReturnType<typeof setTotalUsersCountAC>
-    | ReturnType<typeof toggleIsFetchingAC>
-    | ReturnType<typeof toggleFollowingProgressAC>
-
-export const followUserAC = (userId: number) => {
-    return {
-        type: 'FOLLOW-USER',
-        userId: userId,
-    } as const
-}
-export const unfollowUserAC = (userId: number) => {
-    return {
-        type: 'UNFOLLOW-USER',
-        userId: userId,
-    } as const
-}
-export const setUsersAC = (users: UserType[]) => {
-    return {
-        type: 'SET-USERS',
-        users: users,
-    } as const
-}
-export const setCurrentPageAC = (currentPage: number) => {
-    return {
-        type: 'SET-CURRENT-PAGE',
-        currentPage,
-    } as const
-}
-export const setTotalUsersCountAC = (totalUsersCount: number) => {
-    return {
-        type: 'SET-TOTAL-USERS-COUNT',
-        totalUsersCount,
-    } as const
-}
-export const toggleIsFetchingAC = (isFetching: boolean) => {
-    return {
-        type: 'TOGGLE-IS-FETCHING',
-        isFetching,
-    } as const
-}
-export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress: boolean) => {
-    return {
-        type: 'TOGGLE-FOLLOWING-PROGRESS',
-        userId,
-        isFollowingInProgress,
-    } as const
-}
-
-/////
 //Thunks
-export const getUsersTH = (pageNumber: number, pageSize: number): AppThunk => {
+export const getUsersTH = (pageNumber: number, pageSize: number, term?: string, friend?: boolean): AppThunk => {
     return (dispatch) => {
         dispatch(toggleIsFetchingAC(true))
         dispatch(setCurrentPageAC(pageNumber))
 
-        usersAPI.getUsers(pageNumber, pageSize).then((data) => {
+        usersAPI.getUsers(pageNumber, pageSize, term, friend).then((data) => {
             dispatch(setUsersAC(data.items))
+            dispatch(setFriendsAC(data.items))
+            dispatch(setTotalUsersCountAC(data.totalCount))
             dispatch(toggleIsFetchingAC(false))
         })
     }
@@ -154,8 +108,59 @@ export const unfollowUser = (userId: number): AppThunk => {
         })
     }
 }
+/////
 
-//Thunks
+//Action Creators
+export const setUsersAC = (users: UserType[], friends?: UserType) => {
+    return {
+        type: 'SET-USERS',
+        users,
+        friends,
+    } as const
+}
+export const setFriendsAC = (friends: UserType[]) => {
+    return {
+        type: 'SET-FRIENDS',
+        friends,
+    } as const
+}
+export const followUserAC = (userId: number) => {
+    return {
+        type: 'FOLLOW-USER',
+        userId: userId,
+    } as const
+}
+export const unfollowUserAC = (userId: number) => {
+    return {
+        type: 'UNFOLLOW-USER',
+        userId: userId,
+    } as const
+}
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: 'SET-CURRENT-PAGE',
+        currentPage,
+    } as const
+}
+export const setTotalUsersCountAC = (totalUsersCount: number) => {
+    return {
+        type: 'SET-TOTAL-USERS-COUNT',
+        totalUsersCount,
+    } as const
+}
+export const toggleIsFetchingAC = (isFetching: boolean) => {
+    return {
+        type: 'TOGGLE-IS-FETCHING',
+        isFetching,
+    } as const
+}
+export const toggleFollowingProgressAC = (userId: number, isFollowingInProgress: boolean) => {
+    return {
+        type: 'TOGGLE-FOLLOWING-PROGRESS',
+        userId,
+        isFollowingInProgress,
+    } as const
+}
 /////
 
 export type UsersPageType = {
@@ -165,6 +170,7 @@ export type UsersPageType = {
     currentPage: number
     isFetching: boolean
     isFollowingInProgress: Array<number>
+    friends: Array<UserType>
 }
 export type UserType = {
     name: string
@@ -177,3 +183,13 @@ type UserPhotoType = {
     small: string
     large: string
 }
+
+export type UsersActionTypes =
+    | ReturnType<typeof followUserAC>
+    | ReturnType<typeof unfollowUserAC>
+    | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setFriendsAC>
+    | ReturnType<typeof setCurrentPageAC>
+    | ReturnType<typeof setTotalUsersCountAC>
+    | ReturnType<typeof toggleIsFetchingAC>
+    | ReturnType<typeof toggleFollowingProgressAC>

@@ -1,28 +1,40 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { compose } from 'redux'
 import { ReduxStateType } from '../../redux/redux-store'
-import { UserType } from '../../redux/users-reducer'
+import { getUsersTH, UserType } from '../../redux/users-reducer'
 import { withAuthRedirect } from '../hoc/withAuthReducer'
 import style from './Friends.module.css'
-import avatar from '../../assets/icons/avatar-student.png'
+import wizardAvatar from '../../assets/icons/avatar-wizard-male.jpeg'
 
 const Friends = () => {
+    const dispatch = useDispatch()
+    const friends = useSelector<ReduxStateType, UserType[]>((state) => state.usersPage.friends)
     const users = useSelector<ReduxStateType, UserType[]>((state) => state.usersPage.users)
-    const myFriends = users.filter((user) => (user.followed ? user.name : null))
+    const totalUsersCount = useSelector<ReduxStateType, number>((state) => state.usersPage.totalUsersCount)
+    console.log(friends)
+    console.log(users)
+
+    useEffect(() => {
+        dispatch(getUsersTH(1, 20, '', true))
+    }, [])
 
     return (
-        <div className={style.item}>
-            {myFriends.map((u) => {
-                return (
-                    <div key={u.id}>
-                        <img src={u.photos.small !== null ? u.photos.small : avatar} alt="avatar" width={'70px'} />
-                        <span>{u.name}</span>
-                    </div>
-                )
-            })}
+        <div>
+            <span>{totalUsersCount}</span>
+
+            {friends &&
+                friends.map((friend) => (
+                    <>
+                        <div key={friend.id}>
+                            <img src={friend.photos.small ? friend.photos.small : wizardAvatar} width={'70px'} />
+                            <span> {friend.name}</span>
+                        </div>
+                    </>
+                ))}
         </div>
     )
 }
 
-export default compose(withAuthRedirect)(Friends)
+export default Friends
+// export default compose(withAuthRedirect)(Friends)
