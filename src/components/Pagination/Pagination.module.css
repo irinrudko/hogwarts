@@ -1,0 +1,14 @@
+.item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+    max-width: 190px;
+}
+
+.currentPage {
+    font-weight: bold;
+    color: #4c2234;
+}

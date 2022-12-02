@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 import { UserType } from '../../redux/users-reducer'
 
 type UserPropsType = {
-    pageNumbers: JSX.Element[]
     users: Array<UserType>
     followUser: (userId: number) => void
     unfollowUser: (userId: number) => void
@@ -18,7 +17,6 @@ export class Users extends React.Component<UserPropsType> {
     render = () => {
         return (
             <div className={style.item}>
-                <div className={style.pageNumber}>{this.props.pageNumbers}</div>
                 {this.props.users.map((u) => {
                     return (
                         <div key={u.id}>
